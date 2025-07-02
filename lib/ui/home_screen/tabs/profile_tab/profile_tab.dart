@@ -1,6 +1,7 @@
 import 'package:event_planning_app/l10n/app_localizations.dart';
-import 'package:event_planning_app/ui/home_screen/tabs/profile/language/language_bottom_Sheet.dart';
-import 'package:event_planning_app/ui/home_screen/tabs/profile/theme/theme_bottom_Sheet.dart';
+import 'package:event_planning_app/ui/home_screen/tabs/profile_tab/language/language_bottom_Sheet.dart';
+import 'package:event_planning_app/ui/home_screen/tabs/profile_tab/theme/theme_bottom_Sheet.dart';
+import 'package:event_planning_app/utils/app_assets.dart';
 import 'package:event_planning_app/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -33,6 +34,36 @@ class _ProfileTabState extends State<ProfileTab> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.primaryLight,
+        toolbarHeight: height * 0.18,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(45)
+            )
+        ),
+        title: Padding(
+          padding: EdgeInsets.only(
+              bottom: height * 0.01
+          ),
+          child: Row(
+            children: [
+              Image.asset(AppAssets.routeImage),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: width * 0.04
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text('Route Academy',
+                      style: AppStyles.bold24White,),
+                    Text('routeacademy@gmail.com',
+                      style: AppStyles.medium16White,)
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(
@@ -117,6 +148,29 @@ class _ProfileTabState extends State<ProfileTab> {
                 ),
               ),
             ),
+            Spacer(),
+            ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.redColor,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadiusGeometry.circular(16)
+                    ),
+                    padding: EdgeInsets.symmetric(
+                        vertical: height * 0.02,
+                        horizontal: width * 0.04
+                    )
+                ),
+                onPressed: () {},
+                child: Row(
+                  children: [
+                    Icon(Icons.logout, color: AppColors.whiteColor, size: 30,),
+                    SizedBox(width: width * 0.02,),
+                    Text(AppLocalizations.of(context)!.logout,
+                      style: AppStyles.regular20White,)
+                  ],
+                )
+            ),
+          
 
           ],
         ),
