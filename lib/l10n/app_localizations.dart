@@ -331,6 +331,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Eating'**
   String get eating;
+
+  /// No description provided for @lets_start.
+  ///
+  /// In en, this message translates to:
+  /// **'Let’s Start'**
+  String get lets_start;
+
+  /// No description provided for @personalize_your_experience.
+  ///
+  /// In en, this message translates to:
+  /// **'Personalize Your Experience'**
+  String get personalize_your_experience;
+
+  /// No description provided for @preferred_theme_language.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose your preferred theme and language to get started with a comfortable, tailored experience that suits your style.'**
+  String get preferred_theme_language;
 }
 
 class _AppLocalizationsDelegate

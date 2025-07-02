@@ -23,4 +23,26 @@ class AppAssets {
   static const String searchIcon = 'assets/images/search_icon.png';
   static const String sportIcon = 'assets/images/sport_icon.png';
   static const String starIcon = 'assets/images/star_icon.png';
+  static const String beingCreativeImage =
+      'assets/images/being_creative_image.png';
+  static const String usFlag = 'assets/images/us.png';
+  static const String egFlag = 'assets/images/eg.png';
+  static const String sun = 'assets/images/Sun.png';
+  static const String moon = 'assets/images/Moon.png';
+  static const String light = 'assets/images/light.png';
+  static const String onboardingDarkScreen1 =
+      'assets/images/onboarding_dark_screen1.png';
+  static const String onboardingDarkScreen2 =
+      'assets/images/onboarding_dark_screen2.png';
+  static const String onboardingDarkScreen3 =
+      'assets/images/onboarding_dark_screen3.png';
+  static const String onboardingScreen1 =
+      'assets/images/onboarding_screen1.png';
+  static const String onboardingScreen2 =
+      'assets/images/onboarding_screen2.png';
+  static const String onboardingScreen3 =
+      'assets/images/onboarding_screen3.png';
+  static const String meeting = 'assets/images/meeting.png';
+  static const String bookClub = 'assets/images/book_club.png';
+  static const String birthday = 'assets/images/birthday.png';
 }

@@ -31,7 +31,7 @@ class EventTabItem extends StatelessWidget {
           width: 1,
           color: isSelected
               ? Theme.of(context).focusColor
-              : AppColors.transparentColor,
+              : AppColors.whiteColor,
         ),
       ),
       child: Text(

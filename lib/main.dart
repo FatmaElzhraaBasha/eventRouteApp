@@ -2,6 +2,8 @@ import 'package:event_planning_app/providers/app_Language_Provider.dart';
 import 'package:event_planning_app/providers/app_theme_provider.dart';
 import 'package:event_planning_app/ui/home_screen/home_screen.dart';
 import 'package:event_planning_app/ui/home_screen/home_screen_1.dart';
+import 'package:event_planning_app/ui/onboarding_screens/onboarding_screen.dart';
+import 'package:event_planning_app/ui/onboarding_screens/personalize_onboarding_screen/personalize_onboarding_screen.dart';
 import 'package:event_planning_app/utils/app_routes.dart';
 import 'package:event_planning_app/utils/app_themes.dart';
 import 'package:flutter/material.dart';
@@ -29,9 +31,13 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.home1RouteName,
-      routes: {AppRoutes.homeRouteName: (context) => HomeScreen(),
-        AppRoutes.home1RouteName: (context) => HomeScreen1()
+      initialRoute: AppRoutes.personalizeOnboardingScreen,
+      routes: {
+        AppRoutes.homeRouteName: (context) => HomeScreen(),
+        AppRoutes.home1RouteName: (context) => HomeScreen1(),
+        AppRoutes.personalizeOnboardingScreen: (context) =>
+            PersonalizeOnboardingScreen(),
+        AppRoutes.onboardingScreen: (context) => OnboardingScreen()
       },
       locale: Locale(languageProvider.appLanguage),
       localizationsDelegates: AppLocalizations.localizationsDelegates,

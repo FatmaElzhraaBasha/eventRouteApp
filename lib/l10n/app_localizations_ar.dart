@@ -1,5 +1,6 @@
 // ignore: unused_import
 import 'package:intl/intl.dart' as intl;
+
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -124,4 +125,14 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get eating => 'تناول الطعام';
+
+  @override
+  String get lets_start => 'هيا نبدأ';
+
+  @override
+  String get personalize_your_experience => 'خصص تجربتك';
+
+  @override
+  String get preferred_theme_language =>
+      'اختر السمة واللغة المفضلة لديك لبدء تجربة مريحة ومخصصة تناسب ذوقك.';
 }

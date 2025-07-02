@@ -33,6 +33,7 @@ class _ProfileTabState extends State<ProfileTab> {
 
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: AppColors.primaryLight,
         toolbarHeight: height * 0.18,
         shape: RoundedRectangleBorder(
@@ -49,16 +50,21 @@ class _ProfileTabState extends State<ProfileTab> {
               Image.asset(AppAssets.routeImage),
               Padding(
                 padding: EdgeInsets.symmetric(
-                    horizontal: width * 0.04
+                    horizontal: width * 0.03
                 ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text('Route Academy',
-                      style: AppStyles.bold24White,),
-                    Text('routeacademy@gmail.com',
-                      style: AppStyles.medium16White,)
-                  ],
+                child: Container(
+                  constraints: BoxConstraints(
+                      maxWidth: width * 0.6
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Route Academy',
+                        style: AppStyles.bold24White,),
+                      Text('routeacademy@gmail.com',
+                        style: AppStyles.medium16White,)
+                    ],
+                  ),
                 ),
               )
             ],
@@ -170,14 +176,11 @@ class _ProfileTabState extends State<ProfileTab> {
                   ],
                 )
             ),
-          
-
           ],
         ),
       ),
     );
   }
-
   void showLanguageBottomSheet() {
     showModalBottomSheet(
       context: context,

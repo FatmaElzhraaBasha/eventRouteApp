@@ -6,9 +6,15 @@ import 'package:flutter/material.dart';
 
 import '../../../../utils/app_colors.dart';
 
-class HomeTab extends StatelessWidget {
-  const HomeTab({super.key});
+class HomeTab extends StatefulWidget {
+  HomeTab({super.key});
 
+  @@override
+  State<HomeTab> createState() => _HomeTabState();
+}
+
+class _HomeTabState extends State<HomeTab> {
+  int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
@@ -28,10 +34,11 @@ class HomeTab extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: height * 0.18,
+        toolbarHeight: height * 0.1,
         title: Row(
           children: [
             Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
@@ -39,6 +46,7 @@ class HomeTab extends StatelessWidget {
                       AppLocalizations.of(context)!.welcome_back,
                       style: AppStyles.regular14White,
                     ),
+                    SizedBox(width: width * 0.01,),
                     Image.asset(AppAssets.starIcon),
                   ],
                 ),
@@ -91,6 +99,76 @@ class HomeTab extends StatelessWidget {
           ),
         ),
       ),
+      body: ListView.builder(
+          itemBuilder: (context, index) =>
+              Container(
+                margin: EdgeInsets.all(10),
+                clipBehavior: Clip.antiAlias,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                      width: 2,
+                      color: AppColors.primaryLight
+                  ),
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Stack(
+                  children: [
+                    Image.asset(AppAssets.birthday),
+                    Column(
+                      children: [
+                        FloatingActionButton(onPressed: () {},
+                          backgroundColor: AppColors.whiteColor,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              side: BorderSide(
+                                  width: 0
+                              )
+                          ),
+                          child: Column(
+                            children: [
+                              Text('21', style: AppStyles.bold20Primary,),
+                              Text('NOV', style: AppStyles.bold14Primary,)
+                            ],
+                          ),),
+                        /*FloatingActionButton(onPressed: (){},
+                      backgroundColor: AppColors.whiteColor,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                          side: BorderSide(
+                              width: 0
+                          ),
+
+                      ),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('This is a Birthday Party',
+                          style: AppStyles.bold14Black,),
+                          Icon(Icons.favorite,
+                          color: AppColors.primaryLight,)
+                        ],
+                      )),*/
+
+
+                      ],
+                    )
+                  ],
+                ),
+              ),
+          itemCount: 10),
     );
   }
 }
+
+/*
+eventsNameList.map((eventName) {
+                    return EventTabItem(
+                      isSelected: false,
+                      eventName: eventName,
+                    );
+                  }).toList(),
+                ),
+              ),
+              SizedBox(height: height * 0.02),
+ */
