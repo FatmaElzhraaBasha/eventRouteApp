@@ -1,4 +1,5 @@
 import 'package:event_planning_app/l10n/app_localizations.dart';
+import 'package:event_planning_app/ui/home_screen/tabs/home_tab/widget/event_item.dart';
 import 'package:event_planning_app/ui/home_screen/tabs/home_tab/widget/event_tab_Item.dart';
 import 'package:event_planning_app/utils/app_assets.dart';
 import 'package:event_planning_app/utils/app_styles.dart';
@@ -50,14 +51,16 @@ class _HomeTabState extends State<HomeTab> {
                     Image.asset(AppAssets.starIcon),
                   ],
                 ),
-                Text('john Safwat', style: AppStyles.bold24White),
+                Text('John Safwat', style: AppStyles.bold24White),
               ],
             ),
             Spacer(),
-            Image.asset(AppAssets.modeIcon),
+            ImageIcon(AssetImage(AppAssets.modeIcon),
+              color: AppColors.whiteColor,),
             Container(
               margin: EdgeInsets.only(left: width * 0.02, right: width * 0.01),
-              padding: EdgeInsets.symmetric(horizontal: width * 0.02),
+              padding: EdgeInsets.symmetric(
+                  horizontal: width * 0.02, vertical: height * 0.01),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 color: AppColors.whiteColor,
@@ -86,9 +89,16 @@ class _HomeTabState extends State<HomeTab> {
                   labelPadding: EdgeInsets.zero,
                   indicatorColor: AppColors.transparentColor,
                   dividerColor: AppColors.transparentColor,
+                  onTap: (index) {
+                    selectedIndex = index;
+                    setState(() {
+
+                    });
+                  },
                   tabs: eventsNameList.map((eventName) {
                     return EventTabItem(
-                      isSelected: false,
+                      isSelected: selectedIndex == eventsNameList.indexOf(
+                          eventName),
                       eventName: eventName,
                     );
                   }).toList(),
@@ -99,8 +109,42 @@ class _HomeTabState extends State<HomeTab> {
           ),
         ),
       ),
-      body: ListView.builder(
-          itemBuilder: (context, index) =>
+        body: Column(
+          children: [
+            Expanded(child: ListView.separated(
+                padding: EdgeInsets.only(
+                    top: height * 0.02
+                ),
+                itemBuilder: (context, index) {
+                  return EventItem();
+                },
+                separatorBuilder: (context, index) {
+                  return SizedBox(
+                    height: height * 0.02,
+                  );
+                },
+                itemCount: 20))
+          ],
+
+                    )
+    );
+  }
+}
+
+/*
+eventsNameList.map((eventName) {
+                    return EventTabItem(
+                      isSelected: false,
+                      eventName: eventName,
+                    );
+                  }).toList(),
+                ),
+              ),
+              SizedBox(height: height * 0.02),
+ */
+
+/*
+itemBuilder: (context, index) =>
               Container(
                 margin: EdgeInsets.all(10),
                 clipBehavior: Clip.antiAlias,
@@ -130,7 +174,7 @@ class _HomeTabState extends State<HomeTab> {
                               Text('NOV', style: AppStyles.bold14Primary,)
                             ],
                           ),),
-                        /*FloatingActionButton(onPressed: (){},
+                        FloatingActionButton(onPressed: (){},
                       backgroundColor: AppColors.whiteColor,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
@@ -148,27 +192,5 @@ class _HomeTabState extends State<HomeTab> {
                           Icon(Icons.favorite,
                           color: AppColors.primaryLight,)
                         ],
-                      )),*/
-
-
-                      ],
-                    )
-                  ],
-                ),
-              ),
-          itemCount: 10),
-    );
-  }
-}
-
-/*
-eventsNameList.map((eventName) {
-                    return EventTabItem(
-                      isSelected: false,
-                      eventName: eventName,
-                    );
-                  }).toList(),
-                ),
-              ),
-              SizedBox(height: height * 0.02),
+                      )),
  */

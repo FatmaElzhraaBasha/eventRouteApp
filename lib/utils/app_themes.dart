@@ -10,7 +10,7 @@ class AppThemes {
     scaffoldBackgroundColor: AppColors.whiteBgColor,
     textTheme: TextTheme(
       headlineLarge: AppStyles.bold20Black,
-      headlineMedium: AppStyles.bold20Primary,
+      headlineMedium: AppStyles.medium16Primary,
       headlineSmall: AppStyles.medium16White,
     ),
     bottomSheetTheme: BottomSheetThemeData(),
@@ -60,6 +60,7 @@ class AppThemes {
     textTheme: TextTheme(
       headlineLarge: AppStyles.bold20White,
       headlineMedium: AppStyles.medium16White,
+        headlineSmall: AppStyles.medium16White
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
         backgroundColor: AppColors.transparentColor,
