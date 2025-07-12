@@ -9,7 +9,7 @@ import '../../../../utils/app_colors.dart';
 class HomeTab extends StatefulWidget {
   HomeTab({super.key});
 
-  @@override
+  @override
   State<HomeTab> createState() => _HomeTabState();
 }
 

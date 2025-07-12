@@ -48,16 +48,17 @@ class _HomeScreen1State extends State<HomeScreen1> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        child: Icon(Icons.add, size: 45, color: AppColors.whiteColor),
+        child: Icon(Icons.add, size: 35, color: AppColors.whiteColor),
         //params
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar.builder(
+        backgroundColor: Theme.of(context).primaryColor,
         itemCount: selectedIconPath.length,
         activeIndex: selectedIndex,
-        backgroundColor: Theme.of(context).colorScheme.surface,
-        gapLocation: GapLocation.none,
-        notchSmoothness: NotchSmoothness.softEdge,
+        gapLocation: GapLocation.center,
+        notchSmoothness: NotchSmoothness.sharpEdge,
+        notchMargin: 3.5,
         tabBuilder: (index, isActive) {
           return Padding(
             padding: EdgeInsets.only(top: height * 0.001),

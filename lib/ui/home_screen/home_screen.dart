@@ -23,13 +23,17 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: Theme(
+      bottomNavigationBar:
+      /*Theme(
         data: Theme.of(context).copyWith(
             canvasColor: AppColors.primaryLight
-        ),
-        child: BottomAppBar(
+        ),*/
+      BottomAppBar(
+        color: Theme
+            .of(context)
+            .primaryColor,
           shape: CircularNotchedRectangle(),
-          notchMargin: 8,
+        notchMargin: 6,
           child: BottomNavigationBar(
               currentIndex: selectedIndex,
               onTap: (index) {
@@ -62,11 +66,16 @@ class _HomeScreenState extends State<HomeScreen> {
 
               ]),
         ),
-      ),
       floatingActionButton: FloatingActionButton(onPressed: () {},
-        child: Icon(Icons.add, size: 35,),
+        child: Icon(Icons.add, color: AppColors.whiteColor, size: 35,),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      body: Column(
+        children: [
+          //Image.asset(AppAssets.logoBg),
+          Expanded(child: tabs[selectedIndex]),
+        ],
+      ),
     );
   }
 
@@ -76,7 +85,9 @@ class _HomeScreenState extends State<HomeScreen> {
     required String label,
     required int index}) {
     return BottomNavigationBarItem(
-        icon: ImageIcon(AssetImage(selectedIconName)),
+        icon: ImageIcon(AssetImage(
+            selectedIndex == index ?
+            selectedIconName : unSelectedIconName)),
         label: label
     );
   }

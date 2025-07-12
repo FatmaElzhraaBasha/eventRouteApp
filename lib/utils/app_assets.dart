@@ -45,4 +45,17 @@ class AppAssets {
   static const String meeting = 'assets/images/meeting.png';
   static const String bookClub = 'assets/images/book_club.png';
   static const String birthday = 'assets/images/birthday.png';
+  static const String designerDeskDark = 'assets/images/designer_desk_dark.png';
+  static const String onboardingDarkImage1 =
+      'assets/images/onboarding_dark_image1.png';
+  static const String onboardingDarkImage2 =
+      'assets/images/onboarding_dark_image2.png';
+  static const String onboardingDarkImage3 =
+      'assets/images/onboarding_dark_image3.png';
+  static const String onboardingLightImage1 =
+      'assets/images/onboarding_light_image1.png';
+  static const String onboardingLightImage2 =
+      'assets/images/onboarding_light_image2.png';
+  static const String onboardingLightImage3 =
+      'assets/images/onboarding_light_image3.png';
 }

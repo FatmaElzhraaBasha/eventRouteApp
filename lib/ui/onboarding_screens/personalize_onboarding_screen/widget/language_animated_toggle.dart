@@ -1,7 +1,9 @@
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:event_planning_app/utils/app_assets.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../../../providers/app_Language_Provider.dart';
 import '../../../../utils/app_colors.dart';
 
 class LanguageAnimatedToggle extends StatefulWidget {
@@ -18,14 +20,15 @@ class _LanguageAnimatedToggleState extends State<LanguageAnimatedToggle> {
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
+    var languageProvider = Provider.of<AppLanguageProvider>(context);
     return Center(
       child: AnimatedToggleSwitch<bool>.dual(
         current: isEnglish,
         first: true,
         second: false,
         borderWidth: 5.0,
-        height: height * 0.06,
-        spacing: width * 0.05,
+        height: height * 0.059,
+        spacing: width * 0.03,
         style: ToggleStyle(
           borderColor: AppColors.primaryLight,
           backgroundColor: Colors.transparent,
@@ -37,19 +40,19 @@ class _LanguageAnimatedToggleState extends State<LanguageAnimatedToggle> {
           indicatorBorderRadius: BorderRadius.circular(1000),
         ),
         iconBuilder: (value) {
-          return Padding(
-            padding: const EdgeInsets.all(1.0),
-            child: ClipOval(
-              child: Image.asset(
-                value ? AppAssets.usFlag : AppAssets.egFlag,
-                width: double.infinity,
-                height: double.infinity,
-                fit: BoxFit.fill,
-              ),
+          return ClipOval(
+            child: Image.asset(
+              value ? AppAssets.usFlag : AppAssets.egFlag,
+              width: double.infinity,
+              height: double.infinity,
+              fit: BoxFit.fill,
             ),
           );
         },
         onChanged: (value) {
+          isEnglish
+              ? languageProvider.changeLanguage('ar')
+              : languageProvider.changeLanguage('en');
           setState(() => isEnglish = value);
           //  Localization
         },
