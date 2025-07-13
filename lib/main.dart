@@ -8,18 +8,32 @@ import 'package:event_planning_app/utils/app_routes.dart';
 import 'package:event_planning_app/utils/app_themes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'l10n/app_localizations.dart';
 
-void main() {
-  runApp(MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (context) => AppLanguageProvider()),
-        ChangeNotifierProvider(create: (context) => AppThemeProvider()),
-      ],
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
-      child: MyApp()));
+  final prefs = await SharedPreferences.getInstance();
+
+  final savedLang = prefs.getString('language') ?? 'en';
+  final savedTheme =
+  prefs.getString('theme') == 'dark' ? ThemeMode.dark : ThemeMode.light;
+
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (_) =>
+      AppLanguageProvider()
+        ..setLanguage(savedLang)),
+      ChangeNotifierProvider(create: (_) =>
+      AppThemeProvider()
+        ..setTheme(savedTheme)),
+    ],
+    child: MyApp(),
+  ));
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -31,7 +45,7 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.home1RouteName,
+      initialRoute: AppRoutes.personalizeOnboardingScreen,
       routes: {
         AppRoutes.homeRouteName: (context) => HomeScreen(),
         AppRoutes.home1RouteName: (context) => HomeScreen1(),

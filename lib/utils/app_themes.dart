@@ -7,6 +7,7 @@ class AppThemes {
   static final ThemeData lightTheme = ThemeData(
     focusColor: AppColors.whiteColor,
     primaryColor: AppColors.primaryLight,
+    hoverColor: AppColors.primaryLight,
     scaffoldBackgroundColor: AppColors.whiteBgColor,
     textTheme: TextTheme(
       headlineLarge: AppStyles.bold20Black,
@@ -56,6 +57,7 @@ class AppThemes {
   static final ThemeData darkTheme = ThemeData(
     focusColor: AppColors.primaryLight,
     primaryColor: AppColors.primaryDark,
+    hoverColor: AppColors.whiteColor,
     scaffoldBackgroundColor: AppColors.primaryDark,
     textTheme: TextTheme(
       headlineLarge: AppStyles.bold20White,

@@ -5,8 +5,14 @@ import '../../../../../utils/app_colors.dart';
 class EventTabItem extends StatelessWidget {
   bool isSelected;
   String eventName;
+  IconData eventIcon;
 
-  EventTabItem({super.key, required this.isSelected, required this.eventName});
+  EventTabItem({
+    super.key,
+    required this.isSelected,
+    required this.eventName,
+    required this.eventIcon,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +34,23 @@ class EventTabItem extends StatelessWidget {
             : AppColors.transparentColor,
         border: Border.all(width: 2, color: Theme.of(context).focusColor),
       ),
-      child: Text(
-        eventName,
-        style: isSelected
-            ? Theme.of(context).textTheme.headlineMedium
-            : Theme.of(context).textTheme.headlineSmall,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Icon(
+            eventIcon,
+            color: isSelected
+                ? Theme.of(context).hoverColor
+                : AppColors.whiteColor,
+          ),
+          SizedBox(width: width * 0.01),
+          Text(
+            eventName,
+            style: isSelected
+                ? Theme.of(context).textTheme.headlineMedium
+                : Theme.of(context).textTheme.headlineSmall,
+          ),
+        ],
       ),
     );
   }

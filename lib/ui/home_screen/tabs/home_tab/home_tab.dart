@@ -4,7 +4,10 @@ import 'package:event_planning_app/ui/home_screen/tabs/home_tab/widget/event_tab
 import 'package:event_planning_app/utils/app_assets.dart';
 import 'package:event_planning_app/utils/app_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../../../providers/app_Language_Provider.dart';
+import '../../../../providers/app_theme_provider.dart';
 import '../../../../utils/app_colors.dart';
 
 class HomeTab extends StatefulWidget {
@@ -20,6 +23,9 @@ class _HomeTabState extends State<HomeTab> {
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
+    var themeProvider = Provider.of<AppThemeProvider>(context);
+    var languageProvider = Provider.of<AppLanguageProvider>(context);
+
     List<String> eventsNameList = [
       AppLocalizations.of(context)!.all,
       AppLocalizations.of(context)!.sport,
@@ -31,6 +37,19 @@ class _HomeTabState extends State<HomeTab> {
       AppLocalizations.of(context)!.exhibition,
       AppLocalizations.of(context)!.holiday,
       AppLocalizations.of(context)!.eating,
+    ];
+
+    List<IconData> iconEventList = [
+      Icons.supervised_user_circle,
+      Icons.directions_bike_outlined,
+      Icons.cake_outlined,
+      Icons.meeting_room_outlined,
+      Icons.videogame_asset_outlined,
+      Icons.group_work_outlined,
+      Icons.my_library_books_outlined,
+      Icons.grade_outlined,
+      Icons.holiday_village_outlined,
+      Icons.fastfood_outlined,
     ];
 
     return Scaffold(
@@ -47,7 +66,7 @@ class _HomeTabState extends State<HomeTab> {
                       AppLocalizations.of(context)!.welcome_back,
                       style: AppStyles.regular14White,
                     ),
-                    SizedBox(width: width * 0.01,),
+                    SizedBox(width: width * 0.01),
                     Image.asset(AppAssets.starIcon),
                   ],
                 ),
@@ -55,22 +74,47 @@ class _HomeTabState extends State<HomeTab> {
               ],
             ),
             Spacer(),
-            ImageIcon(AssetImage(AppAssets.modeIcon),
-              color: AppColors.whiteColor,),
-            Container(
-              margin: EdgeInsets.only(left: width * 0.02, right: width * 0.01),
-              padding: EdgeInsets.symmetric(
-                  horizontal: width * 0.02, vertical: height * 0.01),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
+            InkWell(
+              onTap: () {
+                final newTheme = themeProvider.isDarkMode()
+                    ? ThemeMode.light
+                    : ThemeMode.dark;
+                themeProvider.changeTheme(newTheme);
+              },
+              child: Icon(
+                themeProvider.isDarkMode() ? Icons.dark_mode : Icons.light_mode,
                 color: AppColors.whiteColor,
               ),
-              child: Text('EN', style: AppStyles.bold14Primary),
+            ),
+            InkWell(
+              onTap: () {
+                languageProvider.changeLanguage(
+                  languageProvider.appLanguage == 'en' ? 'ar' : 'en',
+                );
+              },
+              child: Container(
+                margin: EdgeInsets.only(
+                  left: width * 0.02,
+                  right: width * 0.01,
+                ),
+                padding: EdgeInsets.symmetric(
+                  horizontal: width * 0.02,
+                  vertical: height * 0.01,
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: AppColors.whiteColor,
+                ),
+                child: Text(
+                  languageProvider.appLanguage.toUpperCase(),
+                  style: AppStyles.bold14Primary,
+                ),
+              ),
             ),
           ],
         ),
         bottom: AppBar(
-          toolbarHeight: height * 0.10,
+          toolbarHeight: height * 0.11,
           title: Column(
             children: [
               Row(
@@ -91,15 +135,15 @@ class _HomeTabState extends State<HomeTab> {
                   dividerColor: AppColors.transparentColor,
                   onTap: (index) {
                     selectedIndex = index;
-                    setState(() {
-
-                    });
+                    setState(() {});
                   },
                   tabs: eventsNameList.map((eventName) {
                     return EventTabItem(
-                      isSelected: selectedIndex == eventsNameList.indexOf(
-                          eventName),
+                      isSelected:
+                          selectedIndex == eventsNameList.indexOf(eventName),
                       eventName: eventName,
+                      eventIcon:
+                          iconEventList[eventsNameList.indexOf(eventName)],
                     );
                   }).toList(),
                 ),
@@ -109,24 +153,22 @@ class _HomeTabState extends State<HomeTab> {
           ),
         ),
       ),
-        body: Column(
-          children: [
-            Expanded(child: ListView.separated(
-                padding: EdgeInsets.only(
-                    top: height * 0.02
-                ),
-                itemBuilder: (context, index) {
-                  return EventItem();
-                },
-                separatorBuilder: (context, index) {
-                  return SizedBox(
-                    height: height * 0.02,
-                  );
-                },
-                itemCount: 20))
-          ],
-
-                    )
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.separated(
+              padding: EdgeInsets.only(top: height * 0.02),
+              itemBuilder: (context, index) {
+                return EventItem();
+              },
+              separatorBuilder: (context, index) {
+                return SizedBox(height: height * 0.02);
+              },
+              itemCount: 20,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
