@@ -46,8 +46,27 @@
   "effortless_event_planning": "Effortless Event Planning",
   "onboarding_2": "Take the hassle out of organizing events with our all-in-one planning tools. From setting up invites and managing RSVPs to scheduling reminders and coordinating details, we’ve got you covered. Plan with ease and focus on what matters – creating an unforgettable experience for you and your guests.",
   "connect_with_friends": "Connect with Friends & Share Moments",
-  "onboarding_3": "Make every event memorable by sharing the experience with others. Our platform lets you invite friends, keep everyone in the loop, and celebrate moments together. Capture and share the excitement with your network, so you can relive the highlights and cherish the memories."
-
-
-
+  "onboarding_3": "Make every event memorable by sharing the experience with others. Our platform lets you invite friends, keep everyone in the loop, and celebrate moments together. Capture and share the excitement with your network, so you can relive the highlights and cherish the memories.",
+  "email": "Email",
+  "password": "Password",
+  "login": "LogIn",
+  "forget_password": "ForgetPassword?",
+  "do_not_have_account": "Don’t Have Account ?",
+  "create_account": "Create Account",
+  "or": "Or",
+  "login_with_google": "Login With Google",
+  "register": "Register",
+  "name": "Name",
+  "re_password": "Re Password",
+  "already_have_account": "Already Have Account ?",
+  "log_in": "Login",
+  "forget_password2": "Forget Password",
+  "reset_password": "Reset Password",
+  "please_enter_email": "Please Enter Email",
+  "please_enter_pass": "Please Enter Password",
+  "please_enter_repass": "Please Enter Re-Password",
+  "please_enter_valid_email": "Please Enter Valid Email",
+  "pass_length_error": "Password Must Be At Least 6 Character",
+  "please_enter_name": "Please Enter Valid Name",
+  "do_not_match": "Re-Password doesn’t Match Password."
 }

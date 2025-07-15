@@ -29,6 +29,7 @@ class _LanguageAnimatedToggleState extends State<LanguageAnimatedToggle> {
         borderWidth: 5.0,
         height: height * 0.059,
         spacing: width * 0.03,
+
         style: ToggleStyle(
           borderColor: AppColors.primaryLight,
           backgroundColor: Colors.transparent,
@@ -56,6 +57,7 @@ class _LanguageAnimatedToggleState extends State<LanguageAnimatedToggle> {
           setState(() => isEnglish = value);
           //  Localization
         },
+        textDirection: TextDirection.rtl,
       ),
     );
   }

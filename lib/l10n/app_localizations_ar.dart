@@ -1,5 +1,6 @@
 // ignore: unused_import
 import 'package:intl/intl.dart' as intl;
+
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -155,4 +156,71 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get onboarding_3 =>
       'اجعل كل فعالية لا تُنسى من خلال مشاركة التجربة مع الآخرين. تتيح لك منصتنا دعوة الأصدقاء، وإبقاؤهم على اطلاع، والاحتفال باللحظات معًا. التقط اللحظات وشاركها مع شبكتك لتستعيد أجمل الذكريات وتحتفظ بها.';
+
+  @override
+  String get email => 'البريد الإلكتروني';
+
+  @override
+  String get password => 'كلمة المرور';
+
+  @override
+  String get login => 'تسجيل الدخول';
+
+  @override
+  String get forget_password => 'هل نسيت كلمة المرور؟';
+
+  @override
+  String get do_not_have_account => 'ليس لديك حساب؟';
+
+  @override
+  String get create_account => 'إنشاء حساب';
+
+  @override
+  String get or => 'أو';
+
+  @override
+  String get login_with_google => 'تسجيل الدخول باستخدام جوجل';
+
+  @override
+  String get register => 'تسجيل';
+
+  @override
+  String get name => 'الاسم';
+
+  @override
+  String get re_password => 'تأكيد كلمة المرور';
+
+  @override
+  String get already_have_account => 'لديك حساب بالفعل؟';
+
+  @override
+  String get log_in => 'تسجيل الدخول';
+
+  @override
+  String get forget_password2 => 'نسيت كلمة المرور';
+
+  @override
+  String get reset_password => 'إعادة تعيين كلمة المرور';
+
+  @override
+  String get please_enter_email => 'يرجى إدخال البريد الإلكتروني';
+
+  @override
+  String get please_enter_pass => 'يرجى إدخال كلمة المرور';
+
+  @override
+  String get please_enter_repass => 'يرجى إدخال إعادة كلمة المرور';
+
+  @override
+  String get please_enter_valid_email => 'يرجى إدخال بريد إلكتروني صالح';
+
+  @override
+  String get pass_length_error =>
+      'يجب أن تتكون كلمة المرور من 6 أحرف على الأقل';
+
+  @override
+  String get please_enter_name => 'يرجى إدخال اسم صالح';
+
+  @override
+  String get do_not_match => 'إعادة كلمة المرور لا تطابق كلمة المرور';
 }

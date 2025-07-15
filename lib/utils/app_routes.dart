@@ -1,7 +1,9 @@
 class AppRoutes {
   static const String homeRouteName = 'home_screen';
   static const String home1RouteName = 'home1_screen';
-  static const String personalizeOnboardingScreen =
+  static const String personalizeOnboardingRouteName =
       'personalize_onboarding_screen';
-  static const String onboardingScreen = 'onboarding_screen';
+  static const String onboardingRouteName = 'onboarding_screen';
+  static const String logInRouteName = 'login_screen';
+  static const String registerRouteName = 'register_screen';
 }

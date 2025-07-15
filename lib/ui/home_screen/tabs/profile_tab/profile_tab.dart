@@ -1,6 +1,7 @@
 import 'package:event_planning_app/l10n/app_localizations.dart';
 import 'package:event_planning_app/ui/home_screen/tabs/profile_tab/language/language_bottom_Sheet.dart';
 import 'package:event_planning_app/ui/home_screen/tabs/profile_tab/theme/theme_bottom_Sheet.dart';
+import 'package:event_planning_app/ui/home_screen/tabs/widget/custom_elevated_button.dart';
 import 'package:event_planning_app/utils/app_assets.dart';
 import 'package:event_planning_app/utils/app_styles.dart';
 import 'package:flutter/material.dart';
@@ -64,7 +65,7 @@ class _ProfileTabState extends State<ProfileTab> {
           vertical: height * 0.04,
         ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
               AppLocalizations.of(context)!.language,
@@ -140,6 +141,41 @@ class _ProfileTabState extends State<ProfileTab> {
               ),
             ),
             Spacer(),
+            CustomElevatedButton(
+              backgroundColor: AppColors.redColor,
+              borderColor: AppColors.redColor,
+              isIcon: true,
+              iconImage: Padding(
+                padding: EdgeInsets.symmetric(horizontal: width * 0.04),
+                child: Icon(
+                    Icons.logout, color: AppColors.whiteColor, size: 30),
+              ),
+              mainAxisAlignment: MainAxisAlignment.start,
+              onPressed: () {},
+              text: AppLocalizations.of(context)!.logout,),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void showLanguageBottomSheet() {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) => LanguageBottomSheet(),
+    );
+  }
+
+  void showThemeBottomSheet() {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) => ThemeBottomSheet(),
+    );
+  }
+}
+
+
+/*
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.redColor,
@@ -163,23 +199,5 @@ class _ProfileTabState extends State<ProfileTab> {
                 ],
               ),
             ),
-          ],
-        ),
-      ),
-    );
-  }
 
-  void showLanguageBottomSheet() {
-    showModalBottomSheet(
-      context: context,
-      builder: (context) => LanguageBottomSheet(),
-    );
-  }
-
-  void showThemeBottomSheet() {
-    showModalBottomSheet(
-      context: context,
-      builder: (context) => ThemeBottomSheet(),
-    );
-  }
-}
+ */

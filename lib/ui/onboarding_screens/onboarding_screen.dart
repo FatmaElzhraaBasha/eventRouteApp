@@ -1,4 +1,5 @@
 import 'package:event_planning_app/l10n/app_localizations.dart';
+import 'package:event_planning_app/ui/auth/log_in/log_in_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:provider/provider.dart';
@@ -7,7 +8,6 @@ import '../../providers/app_theme_provider.dart';
 import '../../utils/app_assets.dart';
 import '../../utils/app_colors.dart';
 import '../../utils/app_styles.dart';
-import '../home_screen/home_screen.dart';
 
 class OnboardingScreen extends StatelessWidget {
   OnboardingScreen({super.key});
@@ -17,7 +17,7 @@ class OnboardingScreen extends StatelessWidget {
   void _onIntroEnd(context) {
     Navigator.of(
       context,
-    ).pushReplacement(MaterialPageRoute(builder: (_) => HomeScreen()));
+    ).pushReplacement(MaterialPageRoute(builder: (_) => LogInScreen()));
   }
 
   @override

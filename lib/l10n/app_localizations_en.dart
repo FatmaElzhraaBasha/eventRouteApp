@@ -1,5 +1,6 @@
 // ignore: unused_import
 import 'package:intl/intl.dart' as intl;
+
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -155,4 +156,70 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get onboarding_3 =>
       'Make every event memorable by sharing the experience with others. Our platform lets you invite friends, keep everyone in the loop, and celebrate moments together. Capture and share the excitement with your network, so you can relive the highlights and cherish the memories.';
+
+  @override
+  String get email => 'Email';
+
+  @override
+  String get password => 'Password';
+
+  @override
+  String get login => 'LogIn';
+
+  @override
+  String get forget_password => 'ForgetPassword?';
+
+  @override
+  String get do_not_have_account => 'Don’t Have Account ?';
+
+  @override
+  String get create_account => 'Create Account';
+
+  @override
+  String get or => 'Or';
+
+  @override
+  String get login_with_google => 'Login With Google';
+
+  @override
+  String get register => 'Register';
+
+  @override
+  String get name => 'Name';
+
+  @override
+  String get re_password => 'Re Password';
+
+  @override
+  String get already_have_account => 'Already Have Account ?';
+
+  @override
+  String get log_in => 'Login';
+
+  @override
+  String get forget_password2 => 'Forget Password';
+
+  @override
+  String get reset_password => 'Reset Password';
+
+  @override
+  String get please_enter_email => 'Please Enter Email';
+
+  @override
+  String get please_enter_pass => 'Please Enter Password';
+
+  @override
+  String get please_enter_repass => 'Please Enter Re-Password';
+
+  @override
+  String get please_enter_valid_email => 'Please Enter Valid Email';
+
+  @override
+  String get pass_length_error => 'Password Must Be At Least 6 Character';
+
+  @override
+  String get please_enter_name => 'Please Enter Valid Name';
+
+  @override
+  String get do_not_match => 'Re-Password doesn’t Match Password.';
 }

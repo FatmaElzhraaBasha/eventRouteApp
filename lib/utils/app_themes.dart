@@ -13,6 +13,7 @@ class AppThemes {
       headlineLarge: AppStyles.bold20Black,
       headlineMedium: AppStyles.medium16Primary,
       headlineSmall: AppStyles.medium16White,
+      labelMedium: AppStyles.medium16Gray,
     ),
     bottomSheetTheme: BottomSheetThemeData(),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
@@ -35,7 +36,7 @@ class AppThemes {
       ),
     ),
     appBarTheme: AppBarTheme(
-      backgroundColor: AppColors.primaryLight,
+
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(25),
@@ -62,7 +63,9 @@ class AppThemes {
     textTheme: TextTheme(
       headlineLarge: AppStyles.bold20White,
       headlineMedium: AppStyles.medium16White,
-        headlineSmall: AppStyles.medium16White
+      headlineSmall: AppStyles.medium16White,
+      labelMedium: AppStyles.medium16White,
+
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
         backgroundColor: AppColors.transparentColor,
@@ -83,7 +86,6 @@ class AppThemes {
       ),
     ),
     appBarTheme: AppBarTheme(
-      backgroundColor: AppColors.primaryDark,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(25),

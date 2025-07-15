@@ -58,4 +58,5 @@ class AppAssets {
       'assets/images/onboarding_light_image2.png';
   static const String onboardingLightImage3 =
       'assets/images/onboarding_light_image3.png';
+  static const String googleIcon = 'assets/images/google_icon.png';
 }

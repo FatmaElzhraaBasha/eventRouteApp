@@ -54,6 +54,7 @@ class _HomeTabState extends State<HomeTab> {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
         toolbarHeight: height * 0.1,
         title: Row(
           children: [
@@ -114,6 +115,7 @@ class _HomeTabState extends State<HomeTab> {
           ],
         ),
         bottom: AppBar(
+          backgroundColor: Theme.of(context).primaryColor,
           toolbarHeight: height * 0.11,
           title: Column(
             children: [

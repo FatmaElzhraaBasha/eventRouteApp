@@ -385,6 +385,138 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Make every event memorable by sharing the experience with others. Our platform lets you invite friends, keep everyone in the loop, and celebrate moments together. Capture and share the excitement with your network, so you can relive the highlights and cherish the memories.'**
   String get onboarding_3;
+
+  /// No description provided for @email.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get email;
+
+  /// No description provided for @password.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get password;
+
+  /// No description provided for @login.
+  ///
+  /// In en, this message translates to:
+  /// **'LogIn'**
+  String get login;
+
+  /// No description provided for @forget_password.
+  ///
+  /// In en, this message translates to:
+  /// **'ForgetPassword?'**
+  String get forget_password;
+
+  /// No description provided for @do_not_have_account.
+  ///
+  /// In en, this message translates to:
+  /// **'Don’t Have Account ?'**
+  String get do_not_have_account;
+
+  /// No description provided for @create_account.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Account'**
+  String get create_account;
+
+  /// No description provided for @or.
+  ///
+  /// In en, this message translates to:
+  /// **'Or'**
+  String get or;
+
+  /// No description provided for @login_with_google.
+  ///
+  /// In en, this message translates to:
+  /// **'Login With Google'**
+  String get login_with_google;
+
+  /// No description provided for @register.
+  ///
+  /// In en, this message translates to:
+  /// **'Register'**
+  String get register;
+
+  /// No description provided for @name.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get name;
+
+  /// No description provided for @re_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Re Password'**
+  String get re_password;
+
+  /// No description provided for @already_have_account.
+  ///
+  /// In en, this message translates to:
+  /// **'Already Have Account ?'**
+  String get already_have_account;
+
+  /// No description provided for @log_in.
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get log_in;
+
+  /// No description provided for @forget_password2.
+  ///
+  /// In en, this message translates to:
+  /// **'Forget Password'**
+  String get forget_password2;
+
+  /// No description provided for @reset_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Password'**
+  String get reset_password;
+
+  /// No description provided for @please_enter_email.
+  ///
+  /// In en, this message translates to:
+  /// **'Please Enter Email'**
+  String get please_enter_email;
+
+  /// No description provided for @please_enter_pass.
+  ///
+  /// In en, this message translates to:
+  /// **'Please Enter Password'**
+  String get please_enter_pass;
+
+  /// No description provided for @please_enter_repass.
+  ///
+  /// In en, this message translates to:
+  /// **'Please Enter Re-Password'**
+  String get please_enter_repass;
+
+  /// No description provided for @please_enter_valid_email.
+  ///
+  /// In en, this message translates to:
+  /// **'Please Enter Valid Email'**
+  String get please_enter_valid_email;
+
+  /// No description provided for @pass_length_error.
+  ///
+  /// In en, this message translates to:
+  /// **'Password Must Be At Least 6 Character'**
+  String get pass_length_error;
+
+  /// No description provided for @please_enter_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Please Enter Valid Name'**
+  String get please_enter_name;
+
+  /// No description provided for @do_not_match.
+  ///
+  /// In en, this message translates to:
+  /// **'Re-Password doesn’t Match Password.'**
+  String get do_not_match;
 }
 
 class _AppLocalizationsDelegate
