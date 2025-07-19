@@ -1,6 +1,5 @@
 // ignore: unused_import
 import 'package:intl/intl.dart' as intl;
-
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -223,4 +222,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get do_not_match => 'إعادة كلمة المرور لا تطابق كلمة المرور';
+
+  @override
+  String get toast_msg => 'تمت إضافة الحدث بنجاح';
+
+  @override
+  String get no_events_found => 'لم يتم العثور على أي أحداث!!';
 }

@@ -1,10 +1,14 @@
-import 'package:event_planning_app/utils/app_assets.dart';
 import 'package:event_planning_app/utils/app_colors.dart';
 import 'package:event_planning_app/utils/app_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
+import '../../../../../model/event.dart';
 
 class EventItem extends StatelessWidget {
-  const EventItem({super.key});
+  Event event;
+
+  EventItem({super.key, required this.event});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +22,7 @@ class EventItem extends StatelessWidget {
         border: Border.all(color: AppColors.primaryLight, width: 2),
         image: DecorationImage(
           fit: BoxFit.fill,
-          image: AssetImage(AppAssets.birthday),
+          image: AssetImage(event.image),
         ),
       ),
       child: Column(
@@ -38,8 +42,11 @@ class EventItem extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('22', style: AppStyles.bold20Primary),
-                Text('Nov', style: AppStyles.bold14Primary),
+                Text( //'${event.dateTime.day}'
+                    event.dateTime.day.toString(),
+                    style: AppStyles.bold20Primary),
+                Text(DateFormat('MMM').format(event.dateTime),
+                    style: AppStyles.bold14Primary),
               ],
             ),
           ),
@@ -62,7 +69,7 @@ class EventItem extends StatelessWidget {
               children: [
                 Expanded(
                   child: Text(
-                    'This is a Birthday Party ',
+                    event.title,
                     style: AppStyles.bold14Black,
                   ),
                 ),

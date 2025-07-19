@@ -20,6 +20,7 @@ class CustomTextFormField extends StatelessWidget {
   TextInputType keyboardType;
   bool obscureText;
   String? obscuringCharacter;
+  int? maxLines;
 
   CustomTextFormField({
     super.key,
@@ -35,6 +36,7 @@ class CustomTextFormField extends StatelessWidget {
     this.keyboardType = TextInputType.text,
     this.obscureText = false,
     this.obscuringCharacter,
+    this.maxLines
   });
 
   @override
@@ -46,6 +48,7 @@ class CustomTextFormField extends StatelessWidget {
         ? AppStyles.medium16White
         : AppStyles.medium16Gray;
     return TextFormField(
+      maxLines: maxLines ?? 1,
       style: hintStyleTheming,
       decoration: InputDecoration(
         enabledBorder: builtDecorationBorder(colorBorderSide: colorBorderSide),

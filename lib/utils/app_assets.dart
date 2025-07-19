@@ -30,21 +30,6 @@ class AppAssets {
   static const String sun = 'assets/images/Sun.png';
   static const String moon = 'assets/images/Moon.png';
   static const String light = 'assets/images/light.png';
-  static const String onboardingDarkScreen1 =
-      'assets/images/onboarding_dark_screen1.png';
-  static const String onboardingDarkScreen2 =
-      'assets/images/onboarding_dark_screen2.png';
-  static const String onboardingDarkScreen3 =
-      'assets/images/onboarding_dark_screen3.png';
-  static const String onboardingScreen1 =
-      'assets/images/onboarding_screen1.png';
-  static const String onboardingScreen2 =
-      'assets/images/onboarding_screen2.png';
-  static const String onboardingScreen3 =
-      'assets/images/onboarding_screen3.png';
-  static const String meeting = 'assets/images/meeting.png';
-  static const String bookClub = 'assets/images/book_club.png';
-  static const String birthday = 'assets/images/birthday.png';
   static const String designerDeskDark = 'assets/images/designer_desk_dark.png';
   static const String onboardingDarkImage1 =
       'assets/images/onboarding_dark_image1.png';
@@ -59,4 +44,35 @@ class AppAssets {
   static const String onboardingLightImage3 =
       'assets/images/onboarding_light_image3.png';
   static const String googleIcon = 'assets/images/google_icon.png';
+  static const String meetingImageDark = 'assets/images/meeting_image_dark.png';
+  static const String sportImageDark = 'assets/images/sport_image_dark.png';
+  static const String birthdayImageDark =
+      'assets/images/birthday_image_dark.png';
+  static const String gamingImageDark = 'assets/images/gaming_image_dark.png';
+  static const String eatingImageDark = 'assets/images/eating_image_dark.png';
+  static const String holidayImageDark = 'assets/images/holiday_image_dark.png';
+  static const String exhibitionImageDark =
+      'assets/images/exhibition_image_dark.png';
+  static const String workShopImageDark =
+      'assets/images/workshop_image_dark.png';
+  static const String bookClubImageDark =
+      'assets/images/bookclub_image_dark.png';
+  static const String meetingImageLight =
+      'assets/images/meeting_image_light.png';
+  static const String sportImageLight = 'assets/images/sport_image_light.png';
+  static const String birthdayImageLight =
+      'assets/images/birthday_image_light.png';
+  static const String gamingImageLight = 'assets/images/gaming_image_light.png';
+  static const String eatingImageLight = 'assets/images/eating_image_light.png';
+  static const String holidayImageLight =
+      'assets/images/holiday_image_light.png';
+  static const String exhibitionImageLight =
+      'assets/images/exhibition_image_light.png';
+  static const String workShopImageLight =
+      'assets/images/workshop_image_light.png';
+  static const String bookClubImageLight =
+      'assets/images/bookclub_image_light.png';
+  static const String editIcon = 'assets/images/edit_icon.png';
+  static const String dateIcon = 'assets/images/date_icon.png';
+  static const String timeIcon = 'assets/images/time_icon.png';
 }

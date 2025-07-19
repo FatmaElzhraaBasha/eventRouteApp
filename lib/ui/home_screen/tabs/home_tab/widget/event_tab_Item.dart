@@ -6,12 +6,23 @@ class EventTabItem extends StatelessWidget {
   bool isSelected;
   String eventName;
   IconData eventIcon;
-
+  Color? borderColor;
+  Color selectedBgColor;
+  Color selectedIconColor;
+  Color unSelectedIconColor;
+  TextStyle? selectedTextStyle;
+  TextStyle? unSelectedTextStyle;
   EventTabItem({
     super.key,
     required this.isSelected,
     required this.eventName,
     required this.eventIcon,
+    this.borderColor,
+    required this.selectedBgColor,
+    required this.selectedTextStyle,
+    required this.unSelectedTextStyle,
+    required this.selectedIconColor,
+    required this.unSelectedIconColor
   });
 
   @override
@@ -30,9 +41,11 @@ class EventTabItem extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(46),
         color: isSelected
-            ? Theme.of(context).focusColor
+            ? selectedBgColor
             : AppColors.transparentColor,
-        border: Border.all(width: 2, color: Theme.of(context).focusColor),
+        border: Border.all(width: 2, color: borderColor ?? Theme
+            .of(context)
+            .focusColor),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -40,15 +53,15 @@ class EventTabItem extends StatelessWidget {
           Icon(
             eventIcon,
             color: isSelected
-                ? Theme.of(context).hoverColor
-                : AppColors.whiteColor,
+                ? selectedIconColor
+                : unSelectedIconColor,
           ),
           SizedBox(width: width * 0.01),
           Text(
             eventName,
             style: isSelected
-                ? Theme.of(context).textTheme.headlineMedium
-                : Theme.of(context).textTheme.headlineSmall,
+                ? selectedTextStyle
+                : unSelectedTextStyle
           ),
         ],
       ),

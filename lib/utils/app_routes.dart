@@ -6,4 +6,5 @@ class AppRoutes {
   static const String onboardingRouteName = 'onboarding_screen';
   static const String logInRouteName = 'login_screen';
   static const String registerRouteName = 'register_screen';
+  static const String addEventRouteName = 'add_event_screen';
 }

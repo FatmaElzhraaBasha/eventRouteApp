@@ -222,7 +222,7 @@ class _LogInScreenState extends State<LogInScreen> {
 
   void login() {
     if (formKey.currentState?.validate() == true) {
-      Navigator.pushReplacementNamed(context, AppRoutes.homeRouteName);
+      Navigator.pushReplacementNamed(context, AppRoutes.home1RouteName);
     }
   }
 }

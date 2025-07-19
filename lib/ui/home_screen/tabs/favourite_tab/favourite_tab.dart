@@ -4,7 +4,6 @@ import 'package:event_planning_app/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../utils/app_assets.dart';
-import '../home_tab/widget/event_item.dart';
 import '../widget/custom_text_form_field.dart';
 
 class FavouriteTab extends StatelessWidget {
@@ -41,7 +40,7 @@ class FavouriteTab extends StatelessWidget {
             child: ListView.separated(
               padding: EdgeInsets.only(top: height * 0.02),
               itemBuilder: (context, index) {
-                return EventItem();
+                return Container();
               },
               separatorBuilder: (context, index) {
                 return SizedBox(height: height * 0.02);

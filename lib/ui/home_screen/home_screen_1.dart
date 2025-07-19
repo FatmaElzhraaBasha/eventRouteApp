@@ -9,6 +9,8 @@ import 'package:event_planning_app/utils/app_colors.dart';
 import 'package:event_planning_app/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
+import '../../utils/app_routes.dart';
+
 class HomeScreen1 extends StatefulWidget {
   HomeScreen1({super.key});
 
@@ -46,8 +48,11 @@ class _HomeScreen1State extends State<HomeScreen1> {
       AppLocalizations.of(context)!.profile,
     ];
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).pushNamed(AppRoutes.addEventRouteName);
+        },
         child: Icon(Icons.add, size: 35, color: AppColors.whiteColor),
         //params
       ),

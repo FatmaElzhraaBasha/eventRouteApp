@@ -517,6 +517,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Re-Password doesn’t Match Password.'**
   String get do_not_match;
+
+  /// No description provided for @toast_msg.
+  ///
+  /// In en, this message translates to:
+  /// **'Event Added Successfully'**
+  String get toast_msg;
+
+  /// No description provided for @no_events_found.
+  ///
+  /// In en, this message translates to:
+  /// **'No Events Found!!'**
+  String get no_events_found;
 }
 
 class _AppLocalizationsDelegate

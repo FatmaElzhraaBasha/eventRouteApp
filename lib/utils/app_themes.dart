@@ -8,12 +8,15 @@ class AppThemes {
     focusColor: AppColors.whiteColor,
     primaryColor: AppColors.primaryLight,
     hoverColor: AppColors.primaryLight,
+    canvasColor: AppColors.whiteColor,
     scaffoldBackgroundColor: AppColors.whiteBgColor,
     textTheme: TextTheme(
       headlineLarge: AppStyles.bold20Black,
       headlineMedium: AppStyles.medium16Primary,
       headlineSmall: AppStyles.medium16White,
       labelMedium: AppStyles.medium16Gray,
+        labelLarge: AppStyles.medium16White,
+        titleLarge: AppStyles.medium16Black
     ),
     bottomSheetTheme: BottomSheetThemeData(),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
@@ -59,12 +62,15 @@ class AppThemes {
     focusColor: AppColors.primaryLight,
     primaryColor: AppColors.primaryDark,
     hoverColor: AppColors.whiteColor,
+    canvasColor: AppColors.primaryDark,
     scaffoldBackgroundColor: AppColors.primaryDark,
     textTheme: TextTheme(
       headlineLarge: AppStyles.bold20White,
       headlineMedium: AppStyles.medium16White,
       headlineSmall: AppStyles.medium16White,
       labelMedium: AppStyles.medium16White,
+        labelLarge: AppStyles.medium16PrimaryDark,
+        titleLarge: AppStyles.medium16White
 
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(

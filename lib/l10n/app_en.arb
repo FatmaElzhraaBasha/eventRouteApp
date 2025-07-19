@@ -68,5 +68,7 @@
   "please_enter_valid_email": "Please Enter Valid Email",
   "pass_length_error": "Password Must Be At Least 6 Character",
   "please_enter_name": "Please Enter Valid Name",
-  "do_not_match": "Re-Password doesn’t Match Password."
+  "do_not_match": "Re-Password doesn’t Match Password.",
+  "toast_msg": "Event Added Successfully",
+  "no_events_found": "No Events Found!!"
 }

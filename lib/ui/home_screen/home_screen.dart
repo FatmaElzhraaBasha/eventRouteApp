@@ -4,6 +4,7 @@ import 'package:event_planning_app/ui/home_screen/tabs/home_tab/home_tab.dart';
 import 'package:event_planning_app/ui/home_screen/tabs/map_tab/map_tab.dart';
 import 'package:event_planning_app/ui/home_screen/tabs/profile_tab/profile_tab.dart';
 import 'package:event_planning_app/utils/app_assets.dart';
+import 'package:event_planning_app/utils/app_routes.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/app_colors.dart';
@@ -23,6 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       bottomNavigationBar:
       /*Theme(
         data: Theme.of(context).copyWith(
@@ -34,6 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
             .primaryColor,
           shape: CircularNotchedRectangle(),
         notchMargin: 6,
+        child: Expanded(
           child: BottomNavigationBar(
               currentIndex: selectedIndex,
               onTap: (index) {
@@ -66,7 +69,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
               ]),
         ),
-      floatingActionButton: FloatingActionButton(onPressed: () {},
+      ),
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        Navigator.of(context).pushNamed(AppRoutes.addEventRouteName);
+      },
         child: Icon(Icons.add, color: AppColors.whiteColor, size: 35,),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
