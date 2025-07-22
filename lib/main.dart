@@ -1,10 +1,13 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:event_planning_app/providers/app_Language_Provider.dart';
 import 'package:event_planning_app/providers/app_theme_provider.dart';
 import 'package:event_planning_app/providers/event_list_provider.dart';
+import 'package:event_planning_app/providers/user_provider.dart';
+import 'package:event_planning_app/ui/auth/forget_password/forget_password.dart';
 import 'package:event_planning_app/ui/auth/log_in/log_in_screen.dart';
 import 'package:event_planning_app/ui/auth/register/register_screen.dart';
 import 'package:event_planning_app/ui/home_screen/add_event/add_event.dart';
+import 'package:event_planning_app/ui/home_screen/edit_event/edit_event.dart';
+import 'package:event_planning_app/ui/home_screen/event_details/event_details.dart';
 import 'package:event_planning_app/ui/home_screen/home_screen.dart';
 import 'package:event_planning_app/ui/home_screen/home_screen_1.dart';
 import 'package:event_planning_app/ui/onboarding_screens/onboarding_screen.dart';
@@ -29,7 +32,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  await FirebaseFirestore.instance.disableNetwork();
+  //await FirebaseFirestore.instance.disableNetwork();
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (_) =>
@@ -40,6 +43,8 @@ void main() async {
         ..setTheme(savedTheme)),
       ChangeNotifierProvider(create: (context) =>
           EventListProvider()),
+      ChangeNotifierProvider(create: (context) =>
+          UserProvider()),
     ],
     child: MyApp(),
   ));
@@ -56,7 +61,7 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.personalizeOnboardingRouteName,
+      initialRoute: AppRoutes.logInRouteName,
       routes: {
         AppRoutes.homeRouteName: (context) => HomeScreen(),
         AppRoutes.home1RouteName: (context) => HomeScreen1(),
@@ -66,7 +71,9 @@ class MyApp extends StatelessWidget {
         AppRoutes.logInRouteName: (context) => LogInScreen(),
         AppRoutes.registerRouteName: (context) => RegisterScreen(),
         AppRoutes.addEventRouteName: (context) => AddEvent(),
-
+        AppRoutes.forgetPassRouteName: (context) => ForgetPassword(),
+        AppRoutes.eventDetailsRouteName: (context) => EventDetails(),
+        AppRoutes.editEventRouteName: (context) => EditEvent(),
       },
       locale: Locale(languageProvider.appLanguage),
       localizationsDelegates: AppLocalizations.localizationsDelegates,

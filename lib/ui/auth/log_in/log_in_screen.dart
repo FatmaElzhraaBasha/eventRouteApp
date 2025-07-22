@@ -1,13 +1,18 @@
 import 'package:event_planning_app/l10n/app_localizations.dart';
+import 'package:event_planning_app/providers/user_provider.dart';
 import 'package:event_planning_app/ui/home_screen/tabs/widget/custom_text_form_field.dart';
 import 'package:event_planning_app/utils/app_routes.dart';
+import 'package:event_planning_app/utils/firebase_utils/firebase_utils.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../providers/app_theme_provider.dart';
+import '../../../providers/event_list_provider.dart';
 import '../../../utils/app_assets.dart';
 import '../../../utils/app_colors.dart';
 import '../../../utils/app_styles.dart';
+import '../../../utils/dialog_utils.dart';
 import '../../home_screen/tabs/widget/custom_elevated_button.dart';
 import '../../onboarding_screens/personalize_onboarding_screen/widget/language_animated_toggle.dart';
 
@@ -125,7 +130,11 @@ class _LogInScreenState extends State<LogInScreen> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.of(
+                                context,
+                              ).pushNamed(AppRoutes.forgetPassRouteName);
+                            },
                             child: Text(
                               AppLocalizations.of(context)!.forget_password,
                               style: AppStyles.bold16PrimaryItalic.copyWith(
@@ -158,7 +167,8 @@ class _LogInScreenState extends State<LogInScreen> {
                             onTap: () {
                               Navigator.of(
                                 context,
-                              ).pushNamed(AppRoutes.registerRouteName);
+                              ).pushReplacementNamed(
+                                  AppRoutes.registerRouteName);
                             },
                             child: Text(
                               AppLocalizations.of(context)!.create_account,
@@ -220,9 +230,102 @@ class _LogInScreenState extends State<LogInScreen> {
     );
   }
 
-  void login() {
+  void login() async {
     if (formKey.currentState?.validate() == true) {
-      Navigator.pushReplacementNamed(context, AppRoutes.home1RouteName);
+      //todo: login
+      //todo: show loading
+      DialogUtils.showLoading(
+        context: context,
+        loadingText: AppLocalizations.of(context)!.waiting,
+      );
+      try {
+        //todo: signup firebase auth
+        final credential = await FirebaseAuth.instance
+            .signInWithEmailAndPassword(
+          email: emailController.text,
+          password: passwordController.text,
+        );
+        //todo: read user from firestore
+        var user = await FirebaseUtils.readUsersFromFireStore(
+            credential.user?.uid ?? '');
+        if (user == null) {
+          return;
+        }
+        //todo: save user in provider
+        var userProvider = Provider.of<UserProvider>(context, listen: false);
+        userProvider.updateUser(user);
+        //todo: change selected index to get all event
+        var eventlistProvider = Provider.of<EventListProvider>(
+            context, listen: false);
+        eventlistProvider.changeSelectedIndex(0, userProvider.currentUser!.id);
+        eventlistProvider.getAllFavoriteEventsFromFireStore(
+            userProvider.currentUser!.id);
+
+        //todo: hide loading
+        DialogUtils.hideLoading(context: context);
+        //todo: show Message
+        DialogUtils.showMessage(
+            context: context,
+            message: AppLocalizations.of(context)!.login_succefully,
+            title: 'Success',
+            posActionName: 'OK',
+            posAction: () {
+              Navigator.of(context).pushReplacementNamed(
+                  AppRoutes.home1RouteName);
+            }
+        );
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'weak-password') {
+          //todo: hide loading
+          DialogUtils.hideLoading(context: context);
+          //todo: show Message
+          DialogUtils.showMessage(
+              context: context,
+              message: AppLocalizations.of(context)!.weak_pass,
+              title: 'Error',
+              posActionName: 'OK'
+          );
+        } else if (e.code == 'email-already-in-use') {
+          //todo: hide loading
+          DialogUtils.hideLoading(context: context);
+          //todo: show Message
+          DialogUtils.showMessage(
+              context: context,
+              message: AppLocalizations.of(context)!.email_already_in_use,
+              title: 'Error',
+              posActionName: 'OK'
+          );
+        } else if (e.code == 'network-request-failed') {
+          //todo: hide loading
+          DialogUtils.hideLoading(context: context);
+          //todo: show Message
+          DialogUtils.showMessage(
+              context: context,
+              message: AppLocalizations.of(context)!.network_request_failed,
+              title: 'Error',
+              posActionName: 'OK'
+          );
+        } else if (e.code == 'invalid-credential') {
+          //todo: hide loading
+          DialogUtils.hideLoading(context: context);
+          //todo: show Message
+          DialogUtils.showMessage(
+              context: context,
+              message: AppLocalizations.of(context)!.invalid_credential,
+              title: 'Error',
+              posActionName: 'OK'
+          );
+        }
+      } catch (e) {
+        //todo: hide loading
+        DialogUtils.hideLoading(context: context);
+        //todo: show Message
+        DialogUtils.showMessage(context: context,
+            message: e.toString(),
+            title: 'Error',
+            posActionName: 'OK');
+      }
+      //Navigator.pushReplacementNamed(context, AppRoutes.home1RouteName);
     }
   }
 }

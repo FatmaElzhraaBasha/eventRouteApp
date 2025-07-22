@@ -529,6 +529,90 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No Events Found!!'**
   String get no_events_found;
+
+  /// No description provided for @no_favorite_events_found.
+  ///
+  /// In en, this message translates to:
+  /// **'No Favorite Events Found!'**
+  String get no_favorite_events_found;
+
+  /// No description provided for @event_updated_succefully.
+  ///
+  /// In en, this message translates to:
+  /// **'Event Updated Succefully.'**
+  String get event_updated_succefully;
+
+  /// No description provided for @loading.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading ...'**
+  String get loading;
+
+  /// No description provided for @register_succefully.
+  ///
+  /// In en, this message translates to:
+  /// **'Register Succefully'**
+  String get register_succefully;
+
+  /// No description provided for @weak_pass.
+  ///
+  /// In en, this message translates to:
+  /// **'The password provided is too weak.'**
+  String get weak_pass;
+
+  /// No description provided for @email_already_in_use.
+  ///
+  /// In en, this message translates to:
+  /// **'The account already exists for that email.'**
+  String get email_already_in_use;
+
+  /// No description provided for @network_request_failed.
+  ///
+  /// In en, this message translates to:
+  /// **'A network error (such as timeout, interrupted connection or unreachable host) has occurred.'**
+  String get network_request_failed;
+
+  /// No description provided for @invalid_credential.
+  ///
+  /// In en, this message translates to:
+  /// **'The supplied auth credential is incorrect, malformed or has expired.'**
+  String get invalid_credential;
+
+  /// No description provided for @waiting.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting ...'**
+  String get waiting;
+
+  /// No description provided for @login_succefully.
+  ///
+  /// In en, this message translates to:
+  /// **'Login Succefully.'**
+  String get login_succefully;
+
+  /// No description provided for @please_enter_event_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter event title'**
+  String get please_enter_event_title;
+
+  /// No description provided for @please_enter_description.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter event description'**
+  String get please_enter_description;
+
+  /// No description provided for @please_choose_date.
+  ///
+  /// In en, this message translates to:
+  /// **'Please choose a date'**
+  String get please_choose_date;
+
+  /// No description provided for @please_choose_time.
+  ///
+  /// In en, this message translates to:
+  /// **'Please choose a time'**
+  String get please_choose_time;
 }
 
 class _AppLocalizationsDelegate

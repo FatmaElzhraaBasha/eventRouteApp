@@ -1,9 +1,13 @@
+import 'package:event_planning_app/providers/event_list_provider.dart';
+import 'package:event_planning_app/utils/app_assets.dart';
 import 'package:event_planning_app/utils/app_colors.dart';
 import 'package:event_planning_app/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../../model/event.dart';
+import '../../../../../providers/user_provider.dart';
 
 class EventItem extends StatelessWidget {
   Event event;
@@ -14,6 +18,9 @@ class EventItem extends StatelessWidget {
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
+    var eventListProvider = Provider.of<EventListProvider>(context);
+    var userProvider = Provider.of<UserProvider>(context);
+
     return Container(
       margin: EdgeInsets.symmetric(horizontal: width * 0.04),
       height: height * 0.25,
@@ -42,11 +49,15 @@ class EventItem extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text( //'${event.dateTime.day}'
-                    event.dateTime.day.toString(),
-                    style: AppStyles.bold20Primary),
-                Text(DateFormat('MMM').format(event.dateTime),
-                    style: AppStyles.bold14Primary),
+                Text(
+                  //'${event.dateTime.day}'
+                  event.dateTime.day.toString(),
+                  style: AppStyles.bold20Primary,
+                ),
+                Text(
+                  DateFormat('MMM').format(event.dateTime),
+                  style: AppStyles.bold14Primary,
+                ),
               ],
             ),
           ),
@@ -58,7 +69,7 @@ class EventItem extends StatelessWidget {
             ),
             padding: EdgeInsets.symmetric(
               horizontal: width * 0.02,
-              //vertical: height*0.01
+                vertical: height * 0.01
             ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
@@ -68,18 +79,22 @@ class EventItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Expanded(
-                  child: Text(
-                    event.title,
-                    style: AppStyles.bold14Black,
-                  ),
+                  child: Text(event.title, style: AppStyles.bold14Black),
                 ),
                 //ImageIcon(AssetImage(AppAssets.iconFavourite))
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.favorite_border_outlined),
-                  color: AppColors.primaryLight,
-                  padding: EdgeInsets.zero,
+                InkWell(
+                    onTap: () {
+                      eventListProvider.updateIsFavourite(
+                          event, context, userProvider.currentUser!.id);
+                    },
+                    child: event.isFavorite == true ?
+                    Image.asset(AppAssets.iconFavouriteSelected,
+                      color: AppColors.primaryLight,)
+                        :
+                    Image.asset(AppAssets.iconFavourite,
+                      color: AppColors.primaryLight,)
                 ),
+
               ],
             ),
           ),

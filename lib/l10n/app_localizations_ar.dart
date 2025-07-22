@@ -1,5 +1,6 @@
 // ignore: unused_import
 import 'package:intl/intl.dart' as intl;
+
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -228,4 +229,49 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get no_events_found => 'لم يتم العثور على أي أحداث!!';
+
+  @override
+  String get no_favorite_events_found => 'لم يتم العثور على فعاليات مفضلة!';
+
+  @override
+  String get event_updated_succefully => 'تم تحديث الفعالية بنجاح.';
+
+  @override
+  String get loading => 'جاري التحميل ...';
+
+  @override
+  String get register_succefully => 'تم التسجيل بنجاح';
+
+  @override
+  String get weak_pass => 'كلمة المرور المُدخلة ضعيفة جدًا.';
+
+  @override
+  String get email_already_in_use =>
+      'يوجد حساب مسجل بالفعل بهذا البريد الإلكتروني.';
+
+  @override
+  String get network_request_failed =>
+      'حدث خطأ في الشبكة (مثل انتهاء المهلة، أو انقطاع الاتصال، أو عدم الوصول إلى الخادم).';
+
+  @override
+  String get invalid_credential =>
+      'بيانات تسجيل الدخول غير صحيحة أو منتهية الصلاحية.';
+
+  @override
+  String get waiting => 'في الانتظار ...';
+
+  @override
+  String get login_succefully => 'تم تسجيل الدخول بنجاح.';
+
+  @override
+  String get please_enter_event_title => 'من فضلك أدخل عنوان الحدث';
+
+  @override
+  String get please_enter_description => 'من فضلك أدخل وصف الحدث';
+
+  @override
+  String get please_choose_date => 'من فضلك اختر التاريخ';
+
+  @override
+  String get please_choose_time => 'من فضلك اختر الوقت';
 }

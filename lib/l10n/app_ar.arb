@@ -70,5 +70,19 @@
   "please_enter_name": "يرجى إدخال اسم صالح",
   "do_not_match": "إعادة كلمة المرور لا تطابق كلمة المرور",
   "toast_msg": "تمت إضافة الحدث بنجاح",
-  "no_events_found": "لم يتم العثور على أي أحداث!!"
+  "no_events_found": "لم يتم العثور على أي أحداث!!",
+  "no_favorite_events_found": "لم يتم العثور على فعاليات مفضلة!",
+  "event_updated_succefully": "تم تحديث الفعالية بنجاح.",
+  "loading": "جاري التحميل ...",
+  "register_succefully": "تم التسجيل بنجاح",
+  "weak_pass": "كلمة المرور المُدخلة ضعيفة جدًا.",
+  "email_already_in_use": "يوجد حساب مسجل بالفعل بهذا البريد الإلكتروني.",
+  "network_request_failed": "حدث خطأ في الشبكة (مثل انتهاء المهلة، أو انقطاع الاتصال، أو عدم الوصول إلى الخادم).",
+  "invalid_credential": "بيانات تسجيل الدخول غير صحيحة أو منتهية الصلاحية.",
+  "waiting": "في الانتظار ...",
+  "login_succefully": "تم تسجيل الدخول بنجاح.",
+  "please_enter_event_title": "من فضلك أدخل عنوان الحدث",
+  "please_enter_description": "من فضلك أدخل وصف الحدث",
+  "please_choose_date": "من فضلك اختر التاريخ",
+  "please_choose_time": "من فضلك اختر الوقت"
 }

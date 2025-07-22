@@ -70,5 +70,19 @@
   "please_enter_name": "Please Enter Valid Name",
   "do_not_match": "Re-Password doesn’t Match Password.",
   "toast_msg": "Event Added Successfully",
-  "no_events_found": "No Events Found!!"
+  "no_events_found": "No Events Found!!",
+  "no_favorite_events_found": "No Favorite Events Found!",
+  "event_updated_succefully": "Event Updated Succefully.",
+  "loading": "Loading ...",
+  "register_succefully": "Register Succefully",
+  "weak_pass": "The password provided is too weak.",
+  "email_already_in_use": "The account already exists for that email.",
+  "network_request_failed": "A network error (such as timeout, interrupted connection or unreachable host) has occurred.",
+  "invalid_credential": "The supplied auth credential is incorrect, malformed or has expired.",
+  "waiting": "Waiting ...",
+  "login_succefully": "Login Succefully.",
+  "please_enter_event_title": "Please enter event title",
+  "please_enter_description": "Please enter event description",
+  "please_choose_date": "Please choose a date",
+  "please_choose_time": "Please choose a time"
 }
