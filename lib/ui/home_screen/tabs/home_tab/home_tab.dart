@@ -133,28 +133,22 @@ class _HomeTabState extends State<HomeTab> {
                   },
                   tabs: eventListProvider.eventsNameList.map((eventName) {
                     return EventTabItem(
-                      selectedBgColor: Theme
-                          .of(context)
-                          .focusColor,
-                      selectedTextStyle: Theme
-                          .of(context)
-                          .textTheme
-                          .headlineMedium,
-                      unSelectedTextStyle: Theme
-                          .of(context)
-                          .textTheme
-                          .headlineSmall,
-                      selectedIconColor: Theme
-                          .of(context)
-                          .hoverColor,
+                      selectedBgColor: Theme.of(context).focusColor,
+                      selectedTextStyle: Theme.of(
+                        context,
+                      ).textTheme.headlineMedium,
+                      unSelectedTextStyle: Theme.of(
+                        context,
+                      ).textTheme.headlineSmall,
+                      selectedIconColor: Theme.of(context).hoverColor,
                       unSelectedIconColor: AppColors.whiteColor,
                       isSelected:
-                      eventListProvider.selectedIndex == eventListProvider
-                          .eventsNameList.indexOf(eventName),
+                          eventListProvider.selectedIndex ==
+                          eventListProvider.eventsNameList.indexOf(eventName),
                       eventName: eventName,
                       eventIcon:
-                      iconEventList[eventListProvider.eventsNameList.indexOf(
-                          eventName)],
+                          iconEventList[eventListProvider.eventsNameList
+                              .indexOf(eventName)],
                     );
                   }).toList(),
                 ),
@@ -167,30 +161,30 @@ class _HomeTabState extends State<HomeTab> {
       body: Column(
         children: [
           Expanded(
-            child: eventListProvider.filterEventList.isEmpty ?
-            Center(child: Text(AppLocalizations.of(context)!.no_events_found,
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .headlineLarge,),)
-                :
-            ListView.separated(
-              padding: EdgeInsets.only(top: height * 0.02),
-              itemBuilder: (context, index) {
-                return EventItem(
-                  event: eventListProvider.filterEventList[index],);
-              },
-              separatorBuilder: (context, index) {
-                return SizedBox(height: height * 0.02);
-              },
-              itemCount: eventListProvider.filterEventList.length,
-            ),
+            child: eventListProvider.filterEventList.isEmpty
+                ? Center(
+                    child: Text(
+                      AppLocalizations.of(context)!.no_events_found,
+                      style: Theme.of(context).textTheme.headlineLarge,
+                    ),
+                  )
+                : ListView.separated(
+                    padding: EdgeInsets.only(top: height * 0.02),
+                    itemBuilder: (context, index) {
+                      return EventItem(
+                        event: eventListProvider.filterEventList[index],
+                      );
+                    },
+                    separatorBuilder: (context, index) {
+                      return SizedBox(height: height * 0.02);
+                    },
+                    itemCount: eventListProvider.filterEventList.length,
+                  ),
           ),
         ],
       ),
     );
   }
-
 }
 
 /*

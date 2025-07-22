@@ -16,14 +16,21 @@ import 'package:provider/provider.dart';
 import '../../../providers/app_theme_provider.dart';
 import '../../../utils/app_colors.dart';
 
-class AddEvent extends StatefulWidget {
-  AddEvent({super.key});
+class EditEvent extends StatefulWidget {
+  //final Event event;
+  EditEvent({super.key});
 
   @override
-  State<AddEvent> createState() => _AddEventState();
+  State<EditEvent> createState() => _EditEventState();
 }
 
-class _AddEventState extends State<AddEvent> {
+class _EditEventState extends State<EditEvent> {
+  late TextEditingController _titleController;
+  late TextEditingController _descriptionController;
+  late TextEditingController _dateController;
+  late TextEditingController _locationController;
+  late TextEditingController _categoryController;
+  late TextEditingController _imageUrlController;
   int selectedIndex = 0;
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
@@ -35,6 +42,15 @@ class _AddEventState extends State<AddEvent> {
   String selectedEventName = '';
   late EventListProvider eventListProvider;
 
+  @override
+  // void initState() {
+  //   super.initState();
+  //   titleController = TextEditingController(text: widget.event.title);
+  //   descriptionController = TextEditingController(text: widget.event.description);
+  //   dateController = TextEditingController(text: DateTime.fromMillisecondsSinceEpoch(data['dateTime']),);
+  //   eventNameController = TextEditingController(text: widget.event.eventName);
+  //   imageUrlController = TextEditingController(text: widget.event.image);
+  // }
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
@@ -98,7 +114,7 @@ class _AddEventState extends State<AddEvent> {
         centerTitle: true,
         iconTheme: IconThemeData(color: AppColors.primaryLight),
         title: Text(
-          AppLocalizations.of(context)!.create_event,
+          AppLocalizations.of(context)!.edit_event,
           style: AppStyles.medium20Primary,
         ),
       ),
@@ -246,7 +262,7 @@ class _AddEventState extends State<AddEvent> {
               SizedBox(height: height * 0.02),
               CustomElevatedButton(
                 onPressed: addEvent,
-                text: AppLocalizations.of(context)!.add_event,
+                text: AppLocalizations.of(context)!.edit_event,
               ),
               SizedBox(height: height * 0.03),
             ],

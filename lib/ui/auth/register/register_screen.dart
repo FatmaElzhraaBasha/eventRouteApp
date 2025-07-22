@@ -1,5 +1,7 @@
 import 'package:event_planning_app/l10n/app_localizations.dart';
 import 'package:event_planning_app/ui/home_screen/tabs/widget/custom_text_form_field.dart';
+import 'package:event_planning_app/utils/dialog_utils.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -240,7 +242,84 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 
-  void register() {
-    if (formKey.currentState?.validate() == true) {}
+  void register() async {
+    if (formKey.currentState?.validate() == true) {
+      //todo: register
+      //todo: show loading
+      DialogUtils.showLoading(
+        context: context,
+        loadingText: AppLocalizations.of(context)!.loading,
+      );
+      try {
+        final credential = await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(
+          email: emailController.text,
+          password: passwordController.text,
+        );
+        //todo: hide loading
+        DialogUtils.hideLoading(context: context);
+        //todo: show Message
+        DialogUtils.showMessage(
+            context: context,
+            message: AppLocalizations.of(context)!.register_succefully,
+            title: 'Success',
+            posActionName: 'OK',
+            posAction: () {
+              Navigator.of(context).pushReplacementNamed(
+                  AppRoutes.home1RouteName);
+            }
+        );
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'weak-password') {
+          //todo: hide loading
+          DialogUtils.hideLoading(context: context);
+          //todo: show Message
+          DialogUtils.showMessage(
+              context: context,
+              message: AppLocalizations.of(context)!.weak_pass,
+              title: 'Error',
+              posActionName: 'OK'
+          );
+        } else if (e.code == 'email-already-in-use') {
+          //todo: hide loading
+          DialogUtils.hideLoading(context: context);
+          //todo: show Message
+          DialogUtils.showMessage(
+              context: context,
+              message: AppLocalizations.of(context)!.email_already_in_use,
+              title: 'Error',
+              posActionName: 'OK'
+          );
+        } else if (e.code == 'network-request-failed') {
+          //todo: hide loading
+          DialogUtils.hideLoading(context: context);
+          //todo: show Message
+          DialogUtils.showMessage(
+              context: context,
+              message: AppLocalizations.of(context)!.network_request_failed,
+              title: 'Error',
+              posActionName: 'OK'
+          );
+        } else if (e.code == 'invalid-credential') {
+          //todo: hide loading
+          DialogUtils.hideLoading(context: context);
+          //todo: show Message
+          DialogUtils.showMessage(
+              context: context,
+              message: AppLocalizations.of(context)!.invalid_credential,
+              title: 'Error',
+              posActionName: 'OK'
+          );
+        }
+      } catch (e) {
+        //todo: hide loading
+        DialogUtils.hideLoading(context: context);
+        //todo: show Message
+        DialogUtils.showMessage(context: context,
+            message: e.toString(),
+            title: 'Error',
+            posActionName: 'OK');
+      }
+    }
   }
 }

@@ -75,4 +75,11 @@ class AppAssets {
   static const String editIcon = 'assets/images/edit_icon.png';
   static const String dateIcon = 'assets/images/date_icon.png';
   static const String timeIcon = 'assets/images/time_icon.png';
+  static const String forgetPassImage = 'assets/images/forget_pass_image.png';
+  static const String editEventIcon = 'assets/images/edit_event_icon.png';
+  static const String deleteEventIcon = 'assets/images/delete_event_icon.png';
+  static const String editEventMap = 'assets/images/edit_event_map.png';
+  static const String iconFavoriteSelected =
+      'assets/images/icon_favorite_selected.png';
+  static const String iconFavorite = 'assets/images/icon_favorite.png';
 }

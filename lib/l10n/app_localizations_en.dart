@@ -1,5 +1,6 @@
 // ignore: unused_import
 import 'package:intl/intl.dart' as intl;
+
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -227,4 +228,37 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get no_events_found => 'No Events Found!!';
+
+  @override
+  String get no_favorite_events_found => 'No Favorite Events Found!';
+
+  @override
+  String get event_updated_succefully => 'Event Updated Succefully.';
+
+  @override
+  String get loading => 'Loading ...';
+
+  @override
+  String get register_succefully => 'Register Succefully';
+
+  @override
+  String get weak_pass => 'The password provided is too weak.';
+
+  @override
+  String get email_already_in_use =>
+      'The account already exists for that email.';
+
+  @override
+  String get network_request_failed =>
+      'A network error (such as timeout, interrupted connection or unreachable host) has occurred.';
+
+  @override
+  String get invalid_credential =>
+      'The supplied auth credential is incorrect, malformed or has expired.';
+
+  @override
+  String get waiting => 'Waiting ...';
+
+  @override
+  String get login_succefully => 'Login Succefully.';
 }

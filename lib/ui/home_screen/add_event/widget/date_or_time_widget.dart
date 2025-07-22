@@ -10,6 +10,7 @@ class DateOrTimeWidget extends StatelessWidget {
   String text;
   String chooseDateOrTime;
   VoidCallback onPressesd;
+  final String? errorText;
 
   DateOrTimeWidget({
     super.key,
@@ -17,6 +18,7 @@ class DateOrTimeWidget extends StatelessWidget {
     required this.text,
     required this.chooseDateOrTime,
     required this.onPressesd,
+    this.errorText,
   });
 
   @override
@@ -39,6 +41,14 @@ class DateOrTimeWidget extends StatelessWidget {
           onPressed: onPressesd,
           child: Text(chooseDateOrTime, style: AppStyles.medium16Primary),
         ),
+        if (errorText != null)
+          Padding(
+            padding: const EdgeInsets.only(top: 4.0, left: 8),
+            child: Text(
+              errorText!,
+              style: const TextStyle(color: AppColors.redColor, fontSize: 12),
+            ),
+          ),
       ],
     );
   }
