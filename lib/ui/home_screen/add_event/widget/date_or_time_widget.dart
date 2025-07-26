@@ -50,6 +50,14 @@ class DateOrTimeWidget extends StatelessWidget {
               ),
           ],
         ),
+        if (errorText != null)
+          Padding(
+            padding: const EdgeInsets.only(top: 4.0, left: 8),
+            child: Text(
+              errorText!,
+              style: const TextStyle(color: AppColors.redColor, fontSize: 12),
+            ),
+          ),
       ],
     );
   }

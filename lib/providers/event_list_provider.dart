@@ -78,7 +78,7 @@ class EventListProvider extends ChangeNotifier {
     }).toList();
     notifyListeners();
   }
-
+  
   void updateIsFavourite(Event event, BuildContext context, String uId) {
 //todo: update isFavorite
     FirebaseUtils.getEventCollection(uId).doc(event.id)
