@@ -14,6 +14,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../../../providers/app_theme_provider.dart';
+import '../../../providers/user_provider.dart';
 import '../../../utils/app_colors.dart';
 
 class EditEvent extends StatefulWidget {
@@ -305,9 +306,11 @@ class _EditEventState extends State<EditEvent> {
       dateTime: selectedDate!,
       eventName: selectedEventName,
       image: selectedImage,
-      time: formatedTime!,
-    );
-    FirebaseUtils.addEventToFireStore(event).timeout(
+      time: formatedTime,);
+    var userProvider = Provider.of<UserProvider>(context, listen: false);
+    FirebaseUtils
+        .addEventToFireStore(event, userProvider.currentUser!.id)
+        .timeout(
       Duration(microseconds: 500),
       onTimeout: () {
         //todo: alert dialog , flutter toast , snack
@@ -317,7 +320,7 @@ class _EditEventState extends State<EditEvent> {
           textColor: AppColors.whiteColor,
         );
         //todo: refresh eventsList
-        eventListProvider.getAllEvents();
+        eventListProvider.getAllEvents(userProvider.currentUser!.id);
         Navigator.pop(context);
       },
     );

@@ -80,8 +80,10 @@
   "network_request_failed": "حدث خطأ في الشبكة (مثل انتهاء المهلة، أو انقطاع الاتصال، أو عدم الوصول إلى الخادم).",
   "invalid_credential": "بيانات تسجيل الدخول غير صحيحة أو منتهية الصلاحية.",
   "waiting": "في الانتظار ...",
-  "login_succefully": "تم تسجيل الدخول بنجاح."
-
-
+  "login_succefully": "تم تسجيل الدخول بنجاح.",
+  "please_enter_event_title": "من فضلك أدخل عنوان الحدث",
+  "please_enter_description": "من فضلك أدخل وصف الحدث",
+  "please_choose_date": "من فضلك اختر التاريخ",
+  "please_choose_time": "من فضلك اختر الوقت"
 
 }

@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../model/event.dart';
+import '../../../../../providers/user_provider.dart';
 
 class EventItem extends StatelessWidget {
   Event event;
@@ -18,6 +19,8 @@ class EventItem extends StatelessWidget {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     var eventListProvider = Provider.of<EventListProvider>(context);
+    var userProvider = Provider.of<UserProvider>(context);
+
     return Container(
       margin: EdgeInsets.symmetric(horizontal: width * 0.04),
       height: height * 0.25,
@@ -81,7 +84,8 @@ class EventItem extends StatelessWidget {
                 //ImageIcon(AssetImage(AppAssets.iconFavourite))
                 InkWell(
                     onTap: () {
-                      eventListProvider.updateIsFavourite(event, context);
+                      eventListProvider.updateIsFavourite(
+                          event, context, userProvider.currentUser!.id);
                     },
                     child: event.isFavorite == true ?
                     Image.asset(AppAssets.iconFavouriteSelected,

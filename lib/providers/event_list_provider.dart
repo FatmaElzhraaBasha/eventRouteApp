@@ -31,9 +31,9 @@ class EventListProvider extends ChangeNotifier {
   }
 
   //todo: get all events
-  void getAllEvents() async {
+  void getAllEvents(String uId) async {
     QuerySnapshot<Event> querySnapshot =
-        await FirebaseUtils.getEventCollection().get();
+    await FirebaseUtils.getEventCollection(uId).get();
     eventList = querySnapshot.docs.map((doc) {
       return doc.data();
     }).toList();
@@ -45,8 +45,8 @@ class EventListProvider extends ChangeNotifier {
   }
 
   //todo: get filter events => eventsName
-  void getFilterEvents() async {
-    var querySnapshot = await FirebaseUtils.getEventCollection().get();
+  void getFilterEvents(String uId) async {
+    var querySnapshot = await FirebaseUtils.getEventCollection(uId).get();
     // querySnapshot.docs.where((event) {
     //   // if(event.data().eventName == eventsNameList[selectedIndex]){
     //   //   return true;
@@ -68,8 +68,8 @@ class EventListProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void getFilterEventsFromFireStore() async {
-    var querySnapshot = await FirebaseUtils.getEventCollection()
+  void getFilterEventsFromFireStore(String uId) async {
+    var querySnapshot = await FirebaseUtils.getEventCollection(uId)
         .orderBy('dateTime')
         .where('eventName', isEqualTo: eventsNameList[selectedIndex])
         .get();
@@ -78,27 +78,40 @@ class EventListProvider extends ChangeNotifier {
     }).toList();
     notifyListeners();
   }
-
-  void updateIsFavourite(Event event, BuildContext context) {
+  
+  void updateIsFavourite(Event event, BuildContext context, String uId) {
 //todo: update isFavorite
-    FirebaseUtils.getEventCollection().doc(event.id)
+    FirebaseUtils.getEventCollection(uId).doc(event.id)
         .update({'isFavorite': !event.isFavorite})
+        .then((value) {
+      ToastUtils.toastMsg(
+          msg: AppLocalizations.of(context)!.event_updated_succefully,
+          backgroundColor: AppColors.greenColor,
+          textColor: AppColors.whiteColor);
+
+      //todo: get all events , filter events
+      selectedIndex == 0 ? getAllEvents(uId) : getFilterEvents(uId);
+      //todo: get all favorites events
+      //getAllFavoriteEvents();
+      getAllFavoriteEventsFromFireStore(uId);
+    })
         .timeout(Duration(milliseconds: 500), onTimeout: () {
       ToastUtils.toastMsg(
           msg: AppLocalizations.of(context)!.event_updated_succefully,
           backgroundColor: AppColors.greenColor,
           textColor: AppColors.whiteColor);
+
+      //todo: get all events , filter events
+      selectedIndex == 0 ? getAllEvents(uId) : getFilterEvents(uId);
+      //todo: get all favorites events
+      //getAllFavoriteEvents();
+      getAllFavoriteEventsFromFireStore(uId);
     });
-    //todo: get all events , filter events
-    selectedIndex == 0 ? getAllEvents() : getFilterEvents();
-    //todo: get all favorites events
-    //getAllFavoriteEvents();
-    getAllFavoriteEventsFromFireStore();
     notifyListeners();
   }
 
-  void getAllFavoriteEvents() async {
-    var querySnapshot = await FirebaseUtils.getEventCollection().get();
+  void getAllFavoriteEvents(String uId) async {
+    var querySnapshot = await FirebaseUtils.getEventCollection(uId).get();
     querySnapshot.docs.map((doc) {
       return doc.data();
     }).toList();
@@ -108,17 +121,18 @@ class EventListProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void getAllFavoriteEventsFromFireStore() async {
-    var querySnapshot = await FirebaseUtils.getEventCollection()
+  void getAllFavoriteEventsFromFireStore(String uId) async {
+    var querySnapshot = await FirebaseUtils.getEventCollection(uId)
         .orderBy('dateTime')
         .where('isFavorite', isEqualTo: true).get();
     favoriteEventList = querySnapshot.docs.map((doc) {
       return doc.data();
     }).toList();
+    notifyListeners();
   }
 
-  void changeSelectedIndex(int newSelectedIndex) {
+  void changeSelectedIndex(int newSelectedIndex, String uId) {
     selectedIndex = newSelectedIndex;
-    selectedIndex == 0 ? getAllEvents() : getFilterEventsFromFireStore();
+    selectedIndex == 0 ? getAllEvents(uId) : getFilterEventsFromFireStore(uId);
   }
 }

@@ -261,4 +261,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get login_succefully => 'Login Succefully.';
+
+  @override
+  String get please_enter_event_title => 'Please enter event title';
+
+  @override
+  String get please_enter_description => 'Please enter event description';
+
+  @override
+  String get please_choose_date => 'Please choose a date';
+
+  @override
+  String get please_choose_time => 'Please choose a time';
 }

@@ -9,6 +9,7 @@ import 'package:provider/provider.dart';
 
 import '../../../../providers/app_Language_Provider.dart';
 import '../../../../providers/app_theme_provider.dart';
+import '../../../../providers/user_provider.dart';
 import '../../../../utils/app_colors.dart';
 
 class HomeTab extends StatefulWidget {
@@ -21,10 +22,12 @@ class HomeTab extends StatefulWidget {
 class _HomeTabState extends State<HomeTab> {
   @override
   Widget build(BuildContext context) {
+    var userProvider = Provider.of<UserProvider>(context);
     var eventListProvider = Provider.of<EventListProvider>(context);
+
     eventListProvider.getEventNameList(context);
     if (eventListProvider.eventList.isEmpty) {
-      eventListProvider.getAllEvents();
+      eventListProvider.getAllEvents(userProvider.currentUser!.id);
     }
 
     var width = MediaQuery.of(context).size.width;
@@ -64,7 +67,8 @@ class _HomeTabState extends State<HomeTab> {
                     Image.asset(AppAssets.starIcon),
                   ],
                 ),
-                Text('John Safwat', style: AppStyles.bold24White),
+                Text(userProvider.currentUser!.name,
+                    style: AppStyles.bold24White),
               ],
             ),
             Spacer(),
@@ -129,7 +133,8 @@ class _HomeTabState extends State<HomeTab> {
                   indicatorColor: AppColors.transparentColor,
                   dividerColor: AppColors.transparentColor,
                   onTap: (index) {
-                    eventListProvider.changeSelectedIndex(index);
+                    eventListProvider.changeSelectedIndex(
+                        index, userProvider.currentUser!.id);
                   },
                   tabs: eventListProvider.eventsNameList.map((eventName) {
                     return EventTabItem(

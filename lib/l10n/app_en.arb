@@ -80,5 +80,9 @@
   "network_request_failed": "A network error (such as timeout, interrupted connection or unreachable host) has occurred.",
   "invalid_credential": "The supplied auth credential is incorrect, malformed or has expired.",
   "waiting": "Waiting ...",
-  "login_succefully": "Login Succefully."
+  "login_succefully": "Login Succefully.",
+  "please_enter_event_title": "Please enter event title",
+  "please_enter_description": "Please enter event description",
+  "please_choose_date": "Please choose a date",
+  "please_choose_time": "Please choose a time"
 }

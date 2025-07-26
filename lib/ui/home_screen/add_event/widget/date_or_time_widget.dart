@@ -37,9 +37,18 @@ class DateOrTimeWidget extends StatelessWidget {
         SizedBox(width: width * 0.04),
         Text(text, style: Theme.of(context).textTheme.titleLarge),
         Spacer(),
-        TextButton(
-          onPressed: onPressesd,
-          child: Text(chooseDateOrTime, style: AppStyles.medium16Primary),
+        Column(
+          children: [
+            TextButton(
+              onPressed: onPressesd,
+              child: Text(chooseDateOrTime, style: AppStyles.medium16Primary),
+            ),
+            if (errorText != null)
+              Text(
+                errorText!,
+                style: const TextStyle(color: AppColors.redColor, fontSize: 12),
+              ),
+          ],
         ),
         if (errorText != null)
           Padding(

@@ -589,6 +589,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Login Succefully.'**
   String get login_succefully;
+
+  /// No description provided for @please_enter_event_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter event title'**
+  String get please_enter_event_title;
+
+  /// No description provided for @please_enter_description.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter event description'**
+  String get please_enter_description;
+
+  /// No description provided for @please_choose_date.
+  ///
+  /// In en, this message translates to:
+  /// **'Please choose a date'**
+  String get please_choose_date;
+
+  /// No description provided for @please_choose_time.
+  ///
+  /// In en, this message translates to:
+  /// **'Please choose a time'**
+  String get please_choose_time;
 }
 
 class _AppLocalizationsDelegate

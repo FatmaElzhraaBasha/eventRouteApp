@@ -262,4 +262,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get login_succefully => 'تم تسجيل الدخول بنجاح.';
+
+  @override
+  String get please_enter_event_title => 'من فضلك أدخل عنوان الحدث';
+
+  @override
+  String get please_enter_description => 'من فضلك أدخل وصف الحدث';
+
+  @override
+  String get please_choose_date => 'من فضلك اختر التاريخ';
+
+  @override
+  String get please_choose_time => 'من فضلك اختر الوقت';
 }

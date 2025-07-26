@@ -1,11 +1,14 @@
 import 'package:event_planning_app/l10n/app_localizations.dart';
+import 'package:event_planning_app/providers/user_provider.dart';
 import 'package:event_planning_app/ui/home_screen/tabs/widget/custom_text_form_field.dart';
 import 'package:event_planning_app/utils/app_routes.dart';
+import 'package:event_planning_app/utils/firebase_utils/firebase_utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../providers/app_theme_provider.dart';
+import '../../../providers/event_list_provider.dart';
 import '../../../utils/app_assets.dart';
 import '../../../utils/app_colors.dart';
 import '../../../utils/app_styles.dart';
@@ -236,11 +239,28 @@ class _LogInScreenState extends State<LogInScreen> {
         loadingText: AppLocalizations.of(context)!.waiting,
       );
       try {
+        //todo: signup firebase auth
         final credential = await FirebaseAuth.instance
             .signInWithEmailAndPassword(
           email: emailController.text,
           password: passwordController.text,
         );
+        //todo: read user from firestore
+        var user = await FirebaseUtils.readUsersFromFireStore(
+            credential.user?.uid ?? '');
+        if (user == null) {
+          return;
+        }
+        //todo: save user in provider
+        var userProvider = Provider.of<UserProvider>(context, listen: false);
+        userProvider.updateUser(user);
+        //todo: change selected index to get all event
+        var eventlistProvider = Provider.of<EventListProvider>(
+            context, listen: false);
+        eventlistProvider.changeSelectedIndex(0, userProvider.currentUser!.id);
+        eventlistProvider.getAllFavoriteEventsFromFireStore(
+            userProvider.currentUser!.id);
+
         //todo: hide loading
         DialogUtils.hideLoading(context: context);
         //todo: show Message

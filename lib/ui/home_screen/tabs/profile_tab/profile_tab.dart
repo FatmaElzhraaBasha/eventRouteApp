@@ -3,12 +3,15 @@ import 'package:event_planning_app/ui/home_screen/tabs/profile_tab/language/lang
 import 'package:event_planning_app/ui/home_screen/tabs/profile_tab/theme/theme_bottom_Sheet.dart';
 import 'package:event_planning_app/ui/home_screen/tabs/widget/custom_elevated_button.dart';
 import 'package:event_planning_app/utils/app_assets.dart';
+import 'package:event_planning_app/utils/app_routes.dart';
 import 'package:event_planning_app/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../providers/app_Language_Provider.dart';
 import '../../../../providers/app_theme_provider.dart';
+import '../../../../providers/event_list_provider.dart';
+import '../../../../providers/user_provider.dart';
 import '../../../../utils/app_colors.dart';
 
 class ProfileTab extends StatefulWidget {
@@ -25,6 +28,8 @@ class _ProfileTabState extends State<ProfileTab> {
     var width = MediaQuery.of(context).size.width;
     var themeProvider = Provider.of<AppThemeProvider>(context);
     var languageProvider = Provider.of<AppLanguageProvider>(context);
+    var userProvider = Provider.of<UserProvider>(context);
+    var eventListProvider = Provider.of<EventListProvider>(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -46,9 +51,10 @@ class _ProfileTabState extends State<ProfileTab> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Route Academy', style: AppStyles.bold24White),
+                      Text(userProvider.currentUser!.name,
+                          style: AppStyles.bold24White),
                       Text(
-                        'routeacademy@gmail.com',
+                        userProvider.currentUser!.email,
                         style: AppStyles.medium16White,
                       ),
                     ],
@@ -151,7 +157,17 @@ class _ProfileTabState extends State<ProfileTab> {
                     Icons.logout, color: AppColors.whiteColor, size: 30),
               ),
               mainAxisAlignment: MainAxisAlignment.start,
-              onPressed: () {},
+              onPressed: () {
+                //todo: logout
+                //FirebaseAuth.instance.signOut();
+                //todo: favoriteEventList => empty
+                eventListProvider.favoriteEventList = [];
+                //todo: change selected index to get all event
+                //eventlistProvider.changeSelectedIndex(0, userProvider.currentUser!.id);
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                    AppRoutes.logInRouteName,
+                        (route) => false);
+              },
               text: AppLocalizations.of(context)!.logout,),
           ],
         ),

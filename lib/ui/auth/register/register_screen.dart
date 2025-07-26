@@ -1,10 +1,12 @@
 import 'package:event_planning_app/l10n/app_localizations.dart';
 import 'package:event_planning_app/ui/home_screen/tabs/widget/custom_text_form_field.dart';
 import 'package:event_planning_app/utils/dialog_utils.dart';
+import 'package:event_planning_app/utils/firebase_utils/firebase_utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../model/my_user.dart';
 import '../../../providers/app_theme_provider.dart';
 import '../../../utils/app_assets.dart';
 import '../../../utils/app_colors.dart';
@@ -256,6 +258,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
           email: emailController.text,
           password: passwordController.text,
         );
+
+        //todo:save user to firestore
+        MyUser myUser = MyUser(
+            id: credential.user?.uid ?? '',
+            name: nameController.text,
+            email: emailController.text);
+        await FirebaseUtils.addUserToFireStore(myUser);
+
         //todo: hide loading
         DialogUtils.hideLoading(context: context);
         //todo: show Message
@@ -266,7 +276,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             posActionName: 'OK',
             posAction: () {
               Navigator.of(context).pushReplacementNamed(
-                  AppRoutes.home1RouteName);
+                  AppRoutes.logInRouteName);
             }
         );
       } on FirebaseAuthException catch (e) {

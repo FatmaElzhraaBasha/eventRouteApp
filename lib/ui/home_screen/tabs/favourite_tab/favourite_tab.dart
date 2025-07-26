@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../providers/event_list_provider.dart';
+import '../../../../providers/user_provider.dart';
 import '../../../../utils/app_assets.dart';
 import '../widget/custom_text_form_field.dart';
 
@@ -19,22 +20,28 @@ class FavouriteTab extends StatefulWidget {
 class _FavouriteTabState extends State<FavouriteTab> {
   TextEditingController searchController = TextEditingController();
   late EventListProvider eventListProvider;
-
+  late UserProvider userProvider;
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      //eventListProvider.getAllFavoriteEvents();
-      eventListProvider.getAllFavoriteEventsFromFireStore();
-    });
-  }
+  // void initState() {
+  //   // TODO: implement initState
+  //   super.initState();
+  //   WidgetsBinding.instance.addPostFrameCallback((_) {
+  //     //eventListProvider.getAllFavoriteEvents();
+  //     eventListProvider.getAllFavoriteEventsFromFireStore(
+  //         userProvider.currentUser!.id);
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
     eventListProvider = Provider.of<EventListProvider>(context);
+    userProvider = Provider.of<UserProvider>(context);
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
+    if (eventListProvider.favoriteEventList.isEmpty) {
+      eventListProvider.getAllFavoriteEventsFromFireStore(
+          userProvider.currentUser!.id);
+    }
     return SafeArea(
       child: Column(
         children: [
