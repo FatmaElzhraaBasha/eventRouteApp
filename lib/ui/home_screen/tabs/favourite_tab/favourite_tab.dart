@@ -22,15 +22,15 @@ class _FavouriteTabState extends State<FavouriteTab> {
   late EventListProvider eventListProvider;
   late UserProvider userProvider;
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      //eventListProvider.getAllFavoriteEvents();
-      eventListProvider.getAllFavoriteEventsFromFireStore(
-          userProvider.currentUser!.id);
-    });
-  }
+  // void initState() {
+  //   // TODO: implement initState
+  //   super.initState();
+  //   WidgetsBinding.instance.addPostFrameCallback((_) {
+  //     //eventListProvider.getAllFavoriteEvents();
+  //     eventListProvider.getAllFavoriteEventsFromFireStore(
+  //         userProvider.currentUser!.id);
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -38,9 +38,10 @@ class _FavouriteTabState extends State<FavouriteTab> {
     userProvider = Provider.of<UserProvider>(context);
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
-    // if(eventListProvider.favoriteEventList.isEmpty){
-    //   eventListProvider.getAllFavoriteEventsFromFireStore(userProvider.currentUser!.id);
-    // }
+    if (eventListProvider.favoriteEventList.isEmpty) {
+      eventListProvider.getAllFavoriteEventsFromFireStore(
+          userProvider.currentUser!.id);
+    }
     return SafeArea(
       child: Column(
         children: [
